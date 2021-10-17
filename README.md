@@ -6,8 +6,8 @@ create our favorite anime list, write some reviews on that anime.
 
 ## Project Documents
 
-* Vision Statement
-* Requirements
+* [Vision Statement](https://github.com/Ing140943/anicheck/wiki/AniCheck-Vision)
+* [Requirements](https://github.com/Ing140943/anicheck/wiki/AniCheck-Requirements)
 
 ## Iterations
 
