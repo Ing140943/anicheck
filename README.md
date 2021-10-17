@@ -11,7 +11,7 @@ create our favorite anime list, write some reviews on that anime.
 
 ## Iterations
 
-* Interation 1 Plan
+* [Interation 1 Plan](https://github.com/Ing140943/anicheck/wiki/Iteration-1-Plan) and [TaskBoard](https://github.com/Ing140943/anicheck/projects/1)
 
 ### Team
 
