@@ -1,0 +1,60 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover:not(.active) {
+    background-color: #111;
+}
+
+.active {
+    background-color: rgb(127, 124, 130);
+}
+
+body{
+        background-color: rgb(244, 199, 171);
+}
+
+.search-container {
+        float: right;
+}
+
+input[type=text] {
+      padding: 13px;
+      margin-top: 0px;
+      margin-left: 16px;
+      font-size: 17px;
+      border: none;
+}
+
+button {
+      float: right;
+      padding: 13px;
+      margin-top: 0px;
+      margin-right: 16px;
+      background: rgb(127, 124, 130);
+      color: white;
+      font-size: 17px;
+      border: none;
+      cursor: pointer;
+}
+
+button:hover:not(.active) {
+      background: #ddd;
+}
+
