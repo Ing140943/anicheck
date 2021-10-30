@@ -9,4 +9,6 @@ app_name = 'blog'
 
 urlpatterns = [
     path('', views.index),
+    path('detail/<int:num>/', views.about),
+    path('kitsu/<str:title>/', views.kitsu),
 ]
