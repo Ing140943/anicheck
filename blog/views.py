@@ -1,22 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-<<<<<<< HEAD
 import blog.models
 import asyncio
 import nest_asyncio
 nest_asyncio.apply()
 # from blog.models import *
-=======
-
-
->>>>>>> c4e363459afd01520a3f7f95edabef26db485908
 # Create your views here.
 
 def index(request):
     return render(request, 'blog/blog_index.html', )
 
 
-<<<<<<< HEAD
 def about(request, num):
     return HttpResponse(f"This is a test of Django framework number: {num}")
 
@@ -32,11 +26,9 @@ async def kitsu(request, title):
 def test_kit():
     return blog.models.api_uses('naruto')
 
-=======
 def about(request):
     return HttpResponse("This is a test of Django framework")
 
 
 def result_demo(request):
     return render(request, 'blog/show_detail.html', )
->>>>>>> c4e363459afd01520a3f7f95edabef26db485908

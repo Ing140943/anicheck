@@ -10,7 +10,6 @@ async def anime_search(query):
     entries = await client.search('anime', query, limit=2)
     
     if not entries:
-        # print(f'No entries found for "{query}"')
         demo += f'No entries found for "{query}"'
         return demo
 
@@ -46,7 +45,7 @@ async def anime_search(query):
             "poster": poster_image_link
         }
     return demo
-   
+
 
 anime = 'Naruto'
 
