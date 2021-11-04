@@ -1,0 +1,18 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'blog/style.css' %}">
+<body>
+    <ul>
+        <li><a href="{% url 'blog:index' %}">Home</a></li>
+        <li><a href="#mylist">MyList</a></li>
+        <li><a href="#title">Anime</a></li>
+
+        <li style="float:right"><a class="active" href="#about">AboutUs</a></li>
+        <li style="float:right">
+            <button type="submit">Search</button>
+        </li>
+        <li style="float:right"><input type="text" placeholder="Find your fav anime here..."></li>
+    </ul>
+
+</body>
+
+{% block content %} {% endblock %}

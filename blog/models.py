@@ -1,45 +1,67 @@
-from django.db import models
 import asyncio
-
+import requests
 import kitsu
-# Create your models here.
-class Blog():
 
-    def __init__(self):
-        self.client = kitsu.Client()
+client = kitsu.Client()
 
-    def start(self):
-        while True:
-            loop = asyncio.get_event_loop()
-            # loop.create_task(anime_search(input('Insert an anime name: ')))
-            loop.run_until_complete(self.anime_search(input('Insert an anime name: ')))
 
-    async def anime_search(self, query):
-        entries = await self.client.search('anime', query, limit=5)
-        if not entries:
-            print(f'No entries found for "{query}"')
-            return
+async def anime_search(query):
+    demo = {}
+    entries = await client.search('anime', query, limit=2)
+    
+    if not entries:
+        demo += f'No entries found for "{query}"'
+        return demo
 
-        for i, anime in enumerate(entries, 1):
-            print(f'\n{i}. {anime.title}:')
-            print('---> Sub-Type:', anime.subtype)
-            print('---> Status:', anime.status)
-            print('---> Synopsis:\n' + anime.synopsis)
-            print('---> Episodes:', anime.episode_count)
-            print('---> Age Rating:', anime.age_rating_guide)
-            print('---> Ranking:')
-            print('-> Popularity:', anime.popularity_rank)
-            print('-> Rating:', anime.rating_rank)
+    for i, anime in enumerate(entries, 1):
+        s_links = {}
+        streaming_links = await client.fetch_anime_streaming_links(anime)
+        if streaming_links:
+            for link in streaming_links:
+                s_links[link.title] = link.url
+        
+        # print(anime.title+"l")
+        
+        # url = 
+        anime_title = anime.title
 
-            if anime.started_at:
-                print('---> Started At:', anime.started_at.strftime('%Y-%m-%d'))
-            if anime.ended_at:
-                print('---> Ended At:', anime.ended_at.strftime('%Y-%m-%d'))
+        use_url = f"https://kitsu.io/api/edge/anime?filter[text]={anime_title}"
 
-            streaming_links = await self.client.fetch_anime_streaming_links(anime)
-            if streaming_links:
-                print('---> Streaming Links:')
-                for link in streaming_links:
-                    print(f'-> {link.title}: {link.url}')
+      
+        response = requests.get(use_url)
+        # 
+        # l = response.json()['data']
+        # poster_image_link = ""
+        # for info in l:
+# 'titles']['titles'][        #     if "DragonBall" in info['attributes']['titles']['en']:
+        #         poster_image_link = info['attributes']['posterImage']['original']
+                # break
 
-            print('---> Kitsu Page:', anime.url)
+        demo[anime.title] = {
+            "sub-type" : anime.subtype,
+            "status" : anime.status,
+            "synopsis" : anime.synopsis,
+            "episode" : anime.episode_count,
+            "age-rating" : anime.age_rating_guide,
+            "popularity" : anime.popularity_rank,
+            "rating" : anime.rating_rank,
+            # "start_at" : anime.started_at.strftime('%Y-%m-%d'),
+            # "ended_at" : anime.ended_at.strftime('%Y-%m-%d'),
+            # "link": s_links,
+            # "poster": poster_image_link
+        }
+    return demo
+
+# 
+# anime = 'Dragon Ball'
+# 
+# loop = asyncio.get_event_loop()
+# loop.create_task(anime_search(str(anime)))
+# # loop.run_until_complete(anime_search(str(anime)))
+# data = loop.run_until_complete(asyncio.gather(anime_search(anime)))[0]
+# # data = loop.run_until_complete(asyncio.as_completed(anime_search(anime)))
+# print(data['Dragon Ball'])
+# anime_search('Pokemon Introductory Recap')
+# 
+# # for k,v in data.items():
+#     print(k,v)
