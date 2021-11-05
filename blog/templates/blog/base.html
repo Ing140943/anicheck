@@ -8,9 +8,15 @@
 
         <li style="float:right"><a class="active" href="#about">AboutUs</a></li>
         <li style="float:right">
-            <button type="submit">Search</button>
+            <form action="{% url 'blog:search' %}" method="get">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Find your fav anime here..." name="keyword">
+                    <span>
+                        <input class="active" type="submit" value="Search">
+                      </span>
+                </div>
+            </form>
         </li>
-        <li style="float:right"><input type="text" placeholder="Find your fav anime here..."></li>
     </ul>
 
 </body>
