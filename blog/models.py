@@ -60,7 +60,8 @@ async def anime_search_title(query):
         return
 
     for i, anime in enumerate(entries, 1):
-        results.append(anime.title)
+        anime_title = anime.title.replace('/', '-')
+        results.append(anime_title)
 
     print(results)
     print(query)
