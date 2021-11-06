@@ -1,12 +1,15 @@
 {% load static %}
+
+
 <link rel="stylesheet" href="{% static 'blog/style.css' %}">
 <body>
+
     <ul>
+
         <li><a href="{% url 'blog:index' %}">Home</a></li>
         <li><a href="#mylist">MyList</a></li>
         <li><a href="#title">Anime</a></li>
 
-        <li style="float:right"><a class="active" href="#about">AboutUs</a></li>
         <li style="float:right">
             <form action="{% url 'blog:search' %}" method="get">
                 <div class="input-group">
@@ -17,6 +20,17 @@
                 </div>
             </form>
         </li>
+
+        <li>
+            {% if user.is_authenticated %}
+                Welcome back, {{ user.username }}
+                <a href="{% url 'logout' %}"><button type="button">Logout</button></a> 
+            {% else %}
+                <button> <a href="{% url 'login' %}">Please Login</a></button>
+            {% endif %}
+        </li>
+        <li style="float:right"><a class="active" href="#about">AboutUs</a></li>
+        
     </ul>
 
 </body>

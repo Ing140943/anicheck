@@ -1,8 +1,9 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 import blog.models
 import asyncio
 import nest_asyncio
+
+
 nest_asyncio.apply()
 # from blog.models import *
 # Create your views here.
@@ -51,3 +52,4 @@ def test_kit():
 
 def result_demo(request):
     return render(request, 'blog/show_detail.html', )
+
