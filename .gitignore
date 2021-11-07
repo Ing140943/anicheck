@@ -6,7 +6,7 @@ __pycache__/
 .__pycache__
 # C extensions
 *.so
-
+db.sqlite3
 # Distribution / packaging
 .Python
 build/
@@ -28,7 +28,6 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
-db.sqlite3
 __pycache__
 # PyInstaller
 #  Usually these files are written by a python script from a template
