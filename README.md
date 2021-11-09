@@ -13,6 +13,14 @@ create our favorite anime list, write some reviews on that anime.
 
 * [Interation 1 Plan](https://github.com/Ing140943/anicheck/wiki/Iteration-1-Plan) and [TaskBoard](https://github.com/Ing140943/anicheck/projects/1)
 
+## Iterations 2
+
+* [Interation 2 Plan](https://github.com/Ing140943/anicheck/wiki/Iteration-2-Plan) and [TaskBoard](https://github.com/Ing140943/anicheck/projects/5)
+
+## Iterations 3
+
+* [Interation 3 Plan](https://github.com/Ing140943/anicheck/wiki/Iteration-3-Plan) and [TaskBoard](https://github.com/Ing140943/anicheck/projects/6)
+
 ### Team
 
 * [Bannakorn Sinlapaorankul](https://github.com/borrabeam) 
