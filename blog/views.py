@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import blog.models
+import blog.models.models_search
 import asyncio
 import nest_asyncio
 
@@ -31,16 +31,14 @@ async def kitsu(request, title):
         "age_rating" : data[next(iter(data))]['age-rating'],
         "popularity" : data[next(iter(data))]['popularity'],
         "rating" : data[next(iter(data))]['rating'],
-        # "start_at" : data[next(iter(data))]['start_at'],
-        # "ended_at" : data[next(iter(data))]['ended_at']
     })
 
 async def kitsu_search(request):
     keyword = request.GET['keyword']
     loop = asyncio.get_event_loop()
-    loop.create_task(blog.models.anime_search_title(keyword))
+    loop.create_task(blog.models.models_search.anime_search_title(keyword))
     # print(blog.models.api_uses(title))
-    data = loop.run_until_complete(asyncio.gather(blog.models.anime_search_title(keyword)))[0]
+    data = loop.run_until_complete(asyncio.gather(blog.models.models_search.anime_search_title(keyword)))[0]
     return render(request, 'blog/search.html', context={'title_list': data})
 
 def test_kit():
@@ -53,3 +51,9 @@ def test_kit():
 def result_demo(request):
     return render(request, 'blog/show_detail.html', )
 
+def charfield(request):
+    if request.method == 'POST':
+        form = CharFieldForm(request.POST)
+    else:
+        form = CharFieldForm()
+    return render(request, 'blog/charfield.html', {'form':'form'})

@@ -1,0 +1,13 @@
+{% block body %}
+    <form method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_p}}
+            <caption align="bottom"><button>OK</button></caption>
+        </table>
+    </form>
+    {% if form.is_valid %}
+    <br>
+    Memo: {{ form.memo.value }} <br>
+    {% endif %}
+{% endblock %}
