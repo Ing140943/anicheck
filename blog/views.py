@@ -1,4 +1,3 @@
-from .forms import CharFieldForm
 from django.shortcuts import render
 import blog.models
 import asyncio
