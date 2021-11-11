@@ -1,3 +1,4 @@
+from .forms import CharFieldForm
 from django.shortcuts import render
 import blog.models
 import asyncio
@@ -31,8 +32,6 @@ async def kitsu(request, title):
         "age_rating" : data[next(iter(data))]['age-rating'],
         "popularity" : data[next(iter(data))]['popularity'],
         "rating" : data[next(iter(data))]['rating'],
-        # "start_at" : data[next(iter(data))]['start_at'],
-        # "ended_at" : data[next(iter(data))]['ended_at']
     })
 
 async def kitsu_search(request):
@@ -53,3 +52,9 @@ def test_kit():
 def result_demo(request):
     return render(request, 'blog/show_detail.html', )
 
+def charfield(request):
+    if request.method == 'POST':
+        form = CharFieldForm(request.POST)
+    else:
+        form = CharFieldForm()
+    return render(request, 'blog/charfield.html', {'form':'form'})

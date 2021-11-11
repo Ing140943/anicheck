@@ -12,4 +12,5 @@ urlpatterns = [
     path('detail/<int:num>/', views.about),
     path('kitsu/<str:title>/', views.kitsu, name='kitsu'),
     path('kitsu/search', views.kitsu_search, name='search'),
+    path('charfield/', views.charfield),
 ]

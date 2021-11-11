@@ -9,4 +9,24 @@
     <div>Age Rating: {{ age_rating }}</div>
     <div>Popularity: {{ popularity }}</div>
     <div>Rating: {{ rating }}</div>
+    <!-- <div>
+        <form method="post">
+            {% csrf_token %}
+
+            <textarea name="memo" cols="30" rows="3"></textarea>
+            <div class="container-fluid" style="padding-top: 5px;padding-bottom: 5px;"></div>
+            <button type="submit">Post now!!</button>
+        </form>
+        {% if form.is_valid %}
+        <br>
+        Memo: {{ form.memo.value }} <br>
+    </div> -->
+    <form action="{% url 'reviews:add_review' wine.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Add" />
+    </form>
+    
+    {% endif %}
+    
 {% endblock %}
