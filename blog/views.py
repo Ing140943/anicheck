@@ -1,5 +1,5 @@
 from django.shortcuts import render
-import blog.models
+import blog.models.models_search
 import asyncio
 import nest_asyncio
 
@@ -36,9 +36,9 @@ async def kitsu(request, title):
 async def kitsu_search(request):
     keyword = request.GET['keyword']
     loop = asyncio.get_event_loop()
-    loop.create_task(blog.models.anime_search_title(keyword))
+    loop.create_task(blog.models.models_search.anime_search_title(keyword))
     # print(blog.models.api_uses(title))
-    data = loop.run_until_complete(asyncio.gather(blog.models.anime_search_title(keyword)))[0]
+    data = loop.run_until_complete(asyncio.gather(blog.models.models_search.anime_search_title(keyword)))[0]
     return render(request, 'blog/search.html', context={'title_list': data})
 
 def test_kit():

@@ -19,23 +19,12 @@ async def anime_search(query):
         if streaming_links:
             for link in streaming_links:
                 s_links[link.title] = link.url
-
-        # print(anime.title+"l")
-
-        # url = 
         anime_title = anime.title
 
         use_url = f"https://kitsu.io/api/edge/anime?filter[text]={anime_title}"
 
         response = requests.get(use_url)
-        # 
-        # l = response.json()['data']
-        # poster_image_link = ""
-        # for info in l:
-        # 'titles']['titles'][        #     if "DragonBall" in info['attributes']['titles']['en']:
-        #         poster_image_link = info['attributes']['posterImage']['original']
-        # break
-
+ 
         demo[anime.title] = {
             "sub-type": anime.subtype,
             "status": anime.status,
@@ -44,10 +33,6 @@ async def anime_search(query):
             "age-rating": anime.age_rating_guide,
             "popularity": anime.popularity_rank,
             "rating": anime.rating_rank,
-            # "start_at" : anime.started_at.strftime('%Y-%m-%d'),
-            # "ended_at" : anime.ended_at.strftime('%Y-%m-%d'),
-            # "link": s_links,
-            # "poster": poster_image_link
         }
     return demo
 
@@ -62,25 +47,5 @@ async def anime_search_title(query):
     for i, anime in enumerate(entries, 1):
         anime_title = anime.title.replace('/', '-')
         results.append(anime_title)
-
-    print(results)
-    print(query)
-
-    # user_choice = int(input("Choose anime from list 1,2,3,4,5: "))
-    # user_choice -= 1
-    # anime_name = results[user_choice]
-    # print(anime_name)
     return results
-# 
-# anime = 'Dragon Ball'
-# 
-# loop = asyncio.get_event_loop()
-# loop.create_task(anime_search(str(anime)))
-# # loop.run_until_complete(anime_search(str(anime)))
-# data = loop.run_until_complete(asyncio.gather(anime_search(anime)))[0]
-# # data = loop.run_until_complete(asyncio.as_completed(anime_search(anime)))
-# print(data['Dragon Ball'])
-# anime_search('Pokemon Introductory Recap')
-# 
-# # for k,v in data.items():
-#     print(k,v)
+
