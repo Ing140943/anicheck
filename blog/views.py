@@ -57,3 +57,6 @@ def charfield(request):
     else:
         form = CharFieldForm()
     return render(request, 'blog/charfield.html', {'form':'form'})
+
+def about_us(request):
+    return render(request, 'blog/contact.html', )

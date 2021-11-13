@@ -13,4 +13,5 @@ urlpatterns = [
     path('kitsu/<str:title>/', views.kitsu, name='kitsu'),
     path('kitsu/search', views.kitsu_search, name='search'),
     path('charfield/', views.charfield),
+    path('contact/', views.about_us, name='contact')
 ]
