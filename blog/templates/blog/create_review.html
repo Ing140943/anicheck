@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<div class="col-md-8">
+    <div class="card mb-4 mt-4">
+        <div class="card-header">
+        </div>
+        <div class="card-body">
+            <form enctype="multipart/form-data" method="POST">
+                {% csrf_token %}
+                {{ form.media }}
+                {{ form.as_p }}
+                <button type="submit" class="btn btn-primary"><a href="{% url 'blog:reviews' %}">ok</a></button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
