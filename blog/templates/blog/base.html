@@ -21,7 +21,7 @@
             <li><a href="#mylist">MyList</a></li>
             <li><a href="{% url 'blog:reviews' %}">Reviews</a></li>
             <li><a href="{% url 'blog:create-review' %}">Create review</a></li>
-            <li><a href="#myprofile">Profile</a></li>
+            <li><a href="{% url 'blog:profile-page' %}">Profile</a></li>
             <li>
                 {% if user.is_authenticated %}
                     Welcome back, {{ user.username }}
