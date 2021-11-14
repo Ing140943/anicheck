@@ -16,6 +16,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
