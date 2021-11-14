@@ -14,5 +14,6 @@ urlpatterns = [
     path('kitsu/search', blog.views.search_view.kitsu_search, name='search'),
     path('reviews/', blog.views.review_view.ReviewsView.as_view(), name='reviews'),
     path('create-review/', blog.views.review_view.CreateReviewView.as_view(success_url="/reviews"), name='create-review'),
-    path('profile/', blog.views.user_view.ProfilePageView.as_view(), name='profile-page'),
+    path('profile/<int:pk>', blog.views.user_view.ProfilePageView.as_view(), name='profile'),
+    path('profile/edit', blog.views.user_view.update_user, name='profile-edit'),
 ]
