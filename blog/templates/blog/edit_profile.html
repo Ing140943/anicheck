@@ -1,0 +1,9 @@
+{% extends "blog/base.html" %}
+
+{% block content %}
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        {{ profile_form.as_p }}
+        <button type="submit">Edit</button>
+    </form>
+{% endblock %}
