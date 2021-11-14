@@ -22,4 +22,4 @@ kiwisolver==1.2.0
 django-taggit
 django-ckeditor
 python-decouple==3.3
-django-filters==2.4.0
+django-filter==2.4.0
