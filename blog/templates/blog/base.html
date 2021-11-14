@@ -1,38 +1,77 @@
 {% load static %}
+<link rel="stylesheet" href="{% static 'blog/style.css' %}" />
 
+<! -- anicheck font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Indie+Flower&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&display=swap"
+        rel="stylesheet" />
 
-<link rel="stylesheet" href="{% static 'blog/style.css' %}">
-<body>
+    <! -- bar font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Codystar&family=Cutive+Mono&family=Dokdo&family=Finger+Paint&family=Indie+Flower&family=Lexend+Mega&family=Londrina+Outline&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&family=Short+Stack&family=Yomogi&display=swap"
+            rel="stylesheet" />
 
-    <ul>
-
-        <li><a href="{% url 'blog:index' %}">Home</a></li>
-        <li><a href="#mylist">MyList</a></li>
-        <li><a href="#title">Anime</a></li>
-
-        <li style="float:right">
-            <form action="{% url 'blog:search' %}" method="get">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Find your fav anime here..." name="keyword">
-                    <span>
-                        <input class="active" type="submit" value="Search">
-                      </span>
-                </div>
-            </form>
-        </li>
-
-        <li>
+        <body>
+            <ul>
+            <li><a href="{% url 'blog:index' %}">Home</a></li>
+            <li><a href="#mylist">MyList</a></li>
+            <li><a href="{% url 'blog:reviews' %}">Reviews</a></li>
+            <li><a href="{% url 'blog:create-review' %}">Create review</a></li>
             {% if user.is_authenticated %}
-                Welcome back, {{ user.username }}
-                <a href="{% url 'logout' %}"><button type="button">Logout</button></a> 
-            {% else %}
-                <button> <a href="{% url 'login' %}">Please Login</a></button>
+                <li><a href="{% url 'blog:profile' pk=user.pk %}">Profile</a></li>
             {% endif %}
-        </li>
-        <li style="float:right"><a class="active" href="#about">AboutUs</a></li>
+            <li>
+                {% if user.is_authenticated %}
+                    Welcome back, {{ user.username }}
+                    <a href="{% url 'logout' %}"><button type="button">Logout</button></a> 
+                {% else %}
+                    <button> <a href="{% url 'login' %}">Please Login</a></button>
+                {% endif %}
+            </li>
+
+            <li style="float: right"><a class="active" href="{% url 'blog:contact' %}">AboutUs</a></li>
+
+            <!-- <li style="float: right">
+                <button type="submit">Search</button>
+            </li> -->
+
+            <li style="float:right">
+                <form action="{% url 'blog:search' %}" method="get">
+                    <div class="input-group">
+                        <input type="text" placeholder="Find your fav anime here..." name="keyword">
+                        <span>
+                            <input class="active" type="submit" value="Search">
+                          </span>
+                    </div>
+                </form>
+            </li>
+
+            </ul>
+            <!-- <img src="{% static 'images/iu.jpg' %}" width="100" height="100"> -->
+        </body>
+
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'blog/transit_image.css' %}" />
+
+        <body>
+            <div class="title-box">
+            <marquee scollamount="10" direction="left">
+                <div class="neon">
+                    <h1>A N I C H E C K .</h1>
+                    <span class="gradient"></span>
+                    <span class="spotlight"></span>
+                </div>
+            </marquee>
+            </div>
+
+      
         
     </ul>
-
+  
 </body>
 
 {% block content %} {% endblock %}

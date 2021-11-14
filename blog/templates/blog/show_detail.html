@@ -9,4 +9,13 @@
     <div>Age Rating: {{ age_rating }}</div>
     <div>Popularity: {{ popularity }}</div>
     <div>Rating: {{ rating }}</div>
+    <div class="card-body">
+        <form enctype="multipart/form-data" method="POST">
+            {% csrf_token %}
+            {{ form.media }}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary">Ok</button>
+        </form>
+    </div>
+    
 {% endblock %}

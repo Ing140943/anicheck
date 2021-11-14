@@ -1,0 +1,34 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    {% if reviews %}
+        {% for review in reviews %}
+            <div>
+                <h1>Title: {{ review.title }}</h1>
+                <h2>Author: {{ review.author.username }}</h2>
+                <p>Body: {{ review.body|safe }}</p>
+            </div>
+            <hr>
+        {% endfor %}
+
+        {% if is_paginated %}
+        <!-- Pagination -->
+        <ul>
+            {% if page_obj.has_previous %}
+            <li>
+                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Newer</a>
+            </li>
+            {% endif %}
+
+            {% if page_obj.has_next %}
+            <li>
+                <a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a>
+            </li>
+            {% endif %}
+        </ul>
+        {% endif %}
+    {% else %}
+        <h1>No reviews yet!!!</h1>
+    {% endif %}
+{% endblock %}
+
+

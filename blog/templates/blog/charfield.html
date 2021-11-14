@@ -1,0 +1,14 @@
+{% block body %}
+    <form enctype="multipart/form-data" method="POST">
+        {% csrf_token %}
+        <table>
+            {{ form.media }}
+            {{ form.as_p }}
+            <button type="submit">OK</button>
+        </table>
+    </form>
+    {% if form.is_valid %}
+        <br>
+        Memo: {{ form.memo.value }} <br>
+    {% endif %}
+{% endblock %}
