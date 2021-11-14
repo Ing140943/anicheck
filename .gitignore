@@ -1,5 +1,5 @@
 # Byte-compiled / optimized / DLL files
-blog/migrations
+# blog/migrations
  anicheck/__pycache__/
 __pycache__/
 *.py[cod]
