@@ -24,3 +24,4 @@ django-ckeditor
 python-decouple==3.3
 django-filter==2.4.0
 nest-asyncio==1.5.1
+django-allauth
