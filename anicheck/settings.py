@@ -15,7 +15,7 @@ SECRET_KEY = config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = config('DEBUG', default=False, cast=bool)
 
-ALLOWED_HOSTS = ['https://anicheck-isp.herokuapp.com/']
+ALLOWED_HOSTS = ['https://anicheck-isp.herokuapp.com/', '127.0.0.1']
 
 
 # Application definition
@@ -29,6 +29,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'django.contrib.sites', # New
+    'allauth', # New
+    'allauth.account', # New
+    'allauth.socialaccount', # New 
+    'allauth.socialaccount.providers.google', # New
 ]
 
 MIDDLEWARE = [
@@ -125,9 +130,26 @@ django_heroku.settings(locals())
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
+SITE_ID = 1
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/'
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
 
-    
+# Oauth section
+AUTHENTICATION_BACKENDS = (
+ 'django.contrib.auth.backends.ModelBackend',
+ 'allauth.account.auth_backends.AuthenticationBackend',
+)
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        }
+    }
+}
