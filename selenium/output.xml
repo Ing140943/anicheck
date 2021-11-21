@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.8.3 on win32)" generated="20211121 21:54:40.958" rpa="false" schemaversion="2">
+<suite id="s1" name="Ing" source="C:\year3\ISP\workspace\robot\ing.robot">
+<test id="s1-t1" name="1. เปิดเว็บไซต์ google">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${Browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211121 21:54:41.140" level="INFO">Opening browser 'chrome' to base url 'https://anicheck-isp.herokuapp.com/'.</msg>
+<status status="PASS" starttime="20211121 21:54:41.140" endtime="20211121 21:54:45.669"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="PASS" starttime="20211121 21:54:45.670" endtime="20211121 21:54:45.817"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>0.3</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="PASS" starttime="20211121 21:54:45.818" endtime="20211121 21:54:45.819"/>
+</kw>
+<status status="PASS" starttime="20211121 21:54:41.139" endtime="20211121 21:54:45.820"/>
+</test>
+<test id="s1-t2" name="2. กรอกคำว่า Robot Framework">
+<kw name="Input Text" library="SeleniumLibrary">
+<arg>name=keyword</arg>
+<arg>Naruto</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<msg timestamp="20211121 21:54:45.827" level="INFO">Typing text 'Naruto' into text field 'name=keyword'.</msg>
+<status status="PASS" starttime="20211121 21:54:45.825" endtime="20211121 21:54:46.835"/>
+</kw>
+<status status="PASS" starttime="20211121 21:54:45.822" endtime="20211121 21:54:46.835"/>
+</test>
+<test id="s1-t3" name="3. กดค้นหา">
+<kw name="Click Button" library="SeleniumLibrary">
+<arg>locator=webelement</arg>
+<arg>modifier=False</arg>
+<doc>Clicks the button identified by ``locator``.</doc>
+<msg timestamp="20211121 21:54:46.838" level="INFO">Clicking ['button', 'input'] 'webelement' with False.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20211121 21:54:47.536" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="selenium-screenshot-7.png"&gt;&lt;img src="selenium-screenshot-7.png" width="800px"&gt;&lt;/a&gt;</msg>
+<status status="PASS" starttime="20211121 21:54:46.839" endtime="20211121 21:54:47.536"/>
+</kw>
+<msg timestamp="20211121 21:54:47.539" level="FAIL">ValueError: 'FALSE' modifier does not match to Selenium Keys</msg>
+<status status="FAIL" starttime="20211121 21:54:46.838" endtime="20211121 21:54:47.539"/>
+</kw>
+<status status="FAIL" starttime="20211121 21:54:46.837" endtime="20211121 21:54:47.541">ValueError: 'FALSE' modifier does not match to Selenium Keys</status>
+</test>
+<status status="FAIL" starttime="20211121 21:54:40.960" endtime="20211121 21:54:47.543"/>
+</suite>
+<statistics>
+<total>
+<stat pass="2" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="2" fail="1" skip="0" id="s1" name="Ing">Ing</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
