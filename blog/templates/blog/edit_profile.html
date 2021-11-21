@@ -1,9 +1,36 @@
-{% extends "blog/base.html" %}
+{% extends "blog/base.html" %} {% block content %}
 
-{% block content %}
-    <form enctype="multipart/form-data" method="POST">
-        {% csrf_token %}
-        {{ profile_form.as_p }}
-        <button type="submit">Edit</button>
-    </form>
+<style>
+  .edit {
+    margin-top: 30px;
+    padding-left: 20px;
+    text-align: center;
+  }
+
+  .edit-profile-form {
+    text-align: center;
+  }
+
+  a {
+    color: black;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+  button:hover {
+    background-color: green;
+  }
+</style>
+<form enctype="multipart/form-data" method="POST">
+  <br /><br />
+  <div class="edit-profile-form">
+    {% csrf_token %} {{ profile_form.as_p }}
+    <br />
+  </div>
+  <div class="edit">
+    <button><a href="{% url 'blog:profile-edit' %}">Edit</a></button>
+  </div>
+</form>
 {% endblock %}

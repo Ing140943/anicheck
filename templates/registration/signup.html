@@ -1,16 +1,364 @@
-{% block content %}
-<h2>Register</h2>
-<form method="POST">
-    {% csrf_token %}
-    <table>
-        {{ form.as_table }}
-        <tr>
-            <td colspan="2">
-                <a href= "{% url 'login' %}"> <button type="submit">Register</button></a>
-                
-            </td>
-            
-        </tr>
-    </table>
-</form>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+  </head>
+
+  <script>
+    /*
+    SignUP
+*/
+    const close = document.querySelector(".message-close");
+    const message = document.querySelector(".messages");
+
+    if (close && message) {
+      //Close Error/Success Message
+      close.addEventListener("click", () => {
+        message.style.display = "none";
+      });
+    }
+
+    //Form Validation
+    const signupForm = document.getElementById("signup-form");
+
+    signupForm.addEventListener("submit", (e) => {
+      const title = document.querySelector(".message-title");
+      const messageParagraph = document.querySelector(".message-paragraph");
+      const password1 = document.getElementById("password1").value;
+      const password2 = document.getElementById("password2").value;
+
+      if (password1 != password2) {
+        e.preventDefault();
+        message.style.display = "flex";
+        title.textContent = "Invalid Password!";
+        messageParagraph.textContent = "Make sure to confirm your password.";
+      }
+    });
+  </script>
+
+  <style>
+    /*####################
+GLOBAL
+##############*/
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --bl-color: #171717;
+      --blue-color: #203bd4;
+      --lt-color: #ededed;
+      --text-fs: 16px;
+      --title-fs: 34px;
+    }
+
+    html {
+      font-family: "Raleway", sans-serif;
+      font-size: calc(var(--text-fs) + 6 * ((100vw - 320px) / 680));
+    }
+
+    .container {
+      width: 90%;
+      margin: auto;
+    }
+
+    .center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: 0 0 20px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+      width: 50%;
+      min-width: 320px;
+      padding: 10%;
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .spacer > * {
+      margin-bottom: 20px;
+    }
+
+    .line::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 40%;
+      height: 3px;
+      background-color: var(--bl-color);
+    }
+
+    .line::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 40%;
+      height: 3px;
+      background-color: var(--bl-color);
+    }
+
+    img {
+      max-width: 50px;
+      max-height: 50px;
+    }
+
+    /*####################
+LOGIN
+##############*/
+
+    .title {
+      font-size: calc(var(--title-fs) + 6 * ((100vw - 320px) / 680));
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    .social-login {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-btn {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      font-weight: bold;
+      color: var(--bl-color);
+      cursor: pointer;
+    }
+
+    .icon {
+      height: min(5vw, 30px);
+      width: min(5vw, 30px);
+    }
+
+    .social-btn:hover {
+      border: solid 1px var(--blue-color);
+      padding: 9px;
+    }
+
+    .form-divider {
+      position: relative;
+    }
+
+    .form-input {
+      padding: 10px;
+      width: 100%;
+      border-radius: 10px;
+      text-indent: 15%;
+    }
+
+    .form-input:hover,
+    .form-input:focus {
+      border: solid 2px var(--blue-color);
+    }
+
+    .input-group {
+      position: relative;
+    }
+
+    .input-icon {
+      position: absolute;
+      left: 5%;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .submit {
+      border: none;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: var(--blue-color);
+      font-weight: bold;
+      color: var(--lt-color);
+      cursor: pointer;
+      width: 90%;
+      transform: translate(+5%, -5%);
+      margin-top: 50px;
+    }
+
+    .submit:hover {
+      background-color: var(--lt-color);
+      color: var(--blue-color);
+      border: solid 2px var(--blue-color);
+      padding: 8px;
+    }
+
+    .redirect {
+      text-align: center;
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: x-small;
+    }
+
+    .link {
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: bolder;
+      color: var(--blue-color);
+    }
+
+    .card {
+      margin-block: -20px;
+    }
+
+    /*####################
+SIGNUP
+##############*/
+
+    .messages {
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0 0 24px 8px rgba(0, 0, 0, 0.1);
+      width: 50%;
+      min-width: 320px;
+      position: absolute;
+      top: 2%;
+      left: 50%;
+      transform: translateX(-50%);
+      line-height: 2px;
+      padding: 10px;
+      transition: all 1s ease-in-out;
+    }
+
+    .message-icon {
+      position: relative;
+      width: min(5vw, 30px);
+      height: min(5vw, 30px);
+    }
+
+    .messages .message-paragraph {
+      opacity: 0.7;
+    }
+
+    .message-close {
+      cursor: pointer;
+      padding: 10px;
+      border-radius: 30%;
+    }
+
+    .error:hover {
+      background-color: #f0c419;
+    }
+
+    @media screen and (max-width: 900px) {
+      .messages > * {
+        font-size: 12px;
+        height: 100%;
+      }
+    }
+
+    /*####################
+RESET PASSWORD
+##############*/
+
+    .mute-paragraph {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+
+  <body>
+    <div class="container">
+      <div class="card center spacer">
+        <h1 class="title text-center">Register With</h1>
+        <div class="social-login">
+          <button class="social-btn">
+            <img
+              class="icon"
+              src="https://www.glidetraining.com/wp-content/uploads/2020/10/Google-Gmail-2020.png"
+              alt="gmail icon"
+            />
+            Gmail
+          </button>
+        </div>
+        <div class="text-center line form-divider">or</div>
+        <form method="POST" class="login-form spacer" id="signup-form">
+          {% csrf_token %}
+          <div class="input-group">
+            <img
+              class="icon input-icon"
+              src="https://zananerooz.com/wp-content/uploads/2018/03/User-profile.png"
+              alt=""
+            />
+            <input
+              required
+              name="username"
+              id="username"
+              type="text"
+              class="form-input"
+              placeholder="anicheck"
+              maxlength="16"
+              minlength="6"
+            />
+          </div>
+          <div class="input-group">
+            <img
+              class="icon input-icon"
+              src="https://static.techspot.com/images2/downloads/topdownload/2017/01/key.png"
+              alt=""
+            />
+            <input
+              required
+              name="password1"
+              id="password1"
+              type="password"
+              class="form-input"
+              placeholder="password"
+              maxlength="22"
+              minlength="8"
+            />
+          </div>
+          <div class="input-group">
+            <img
+              class="icon input-icon"
+              src="https://static.techspot.com/images2/downloads/topdownload/2017/01/key.png"
+              alt=""
+            />
+            <input
+              required
+              name="password2"
+              id="password2"
+              type="password"
+              class="form-input"
+              placeholder=" confirm password"
+              maxlength="22"
+              minlength="8"
+            />
+          </div>
+          <input type="submit" class="submit" value="Signup" />
+        </form>
+      </div>
+    </div>
+
+    <div class="redirect">
+      Already have an account?&nbsp;<a href="{% url 'login' %}" class="link"
+        >Login</a
+      >
+      <br /><br />
+    </div>
+  </body>
+</html>

@@ -1,9 +1,39 @@
-{% extends "blog/base.html" %}
+{% extends "blog/base.html" %} {% block content %}
+<style>
+  .edit {
+    margin-top: 30px;
+    padding-left: 20px;
+    text-align: center;
+  }
 
-{% block content %}
-    <button><a href="{% url 'blog:profile-edit' %}">Edit</a></button>
-    <h1>User: {{ user.username }} [{{ user.first_name }} {{ user.last_name }}]</h1>
-    {% for review in object_list %}
-        <h2>Title: {{ review.title }}</h2>
-    {% endfor %}
-{% endblock %}
+  button:hover {
+    background-color: green;
+  }
+
+  a {
+    color: black;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+  h3 {
+    text-align: center;
+    margin-top: 50px;
+  }
+</style>
+
+<div class="edit">
+  <button><a href="{% url 'blog:profile-edit' %}">Edit</a></button>
+</div>
+
+<marquee direction="right">
+  <h3>
+    User: {{ user.username }} [{{ user.first_name }} {{ user.last_name }}]
+  </h3>
+</marquee>
+<br />
+{% for review in object_list %}
+<h2>Title: {{ review.title }}</h2>
+{% endfor %} {% endblock %}

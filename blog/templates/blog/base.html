@@ -1,77 +1,110 @@
-{% load static %}
-<link rel="stylesheet" href="{% static 'blog/style.css' %}" />
+<!DOCTYPE html>
+<html lang="en">
+  {% load static %}
 
-<! -- anicheck font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Bootstrap 4 Introduction</title>
     <link
-        href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Indie+Flower&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&display=swap"
-        rel="stylesheet" />
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
 
-    <! -- bar font -->
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Codystar&family=Cutive+Mono&family=Dokdo&family=Finger+Paint&family=Indie+Flower&family=Lexend+Mega&family=Londrina+Outline&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&family=Short+Stack&family=Yomogi&display=swap"
-            rel="stylesheet" />
-
-        <body>
-            <ul>
-            <li><a href="{% url 'blog:index' %}">Home</a></li>
-            <li><a href="#mylist">MyList</a></li>
-            <li><a href="{% url 'blog:reviews' %}">Reviews</a></li>
-            <li><a href="{% url 'blog:create-review' %}">Create review</a></li>
-            {% if user.is_authenticated %}
-                <li><a href="{% url 'blog:profile' pk=user.pk %}">Profile</a></li>
-            {% endif %}
-            <li>
-                {% if user.is_authenticated %}
-                    Welcome back, {{ user.username }}
-                    <a href="{% url 'logout' %}"><button type="button">Logout</button></a> 
-                {% else %}
-                    <button> <a href="{% url 'login' %}">Please Login</a></button>
-                {% endif %}
-            </li>
-
-            <li style="float: right"><a class="active" href="{% url 'blog:contact' %}">AboutUs</a></li>
-
-            <!-- <li style="float: right">
-                <button type="submit">Search</button>
-            </li> -->
-
-            <li style="float:right">
-                <form action="{% url 'blog:search' %}" method="get">
-                    <div class="input-group">
-                        <input type="text" placeholder="Find your fav anime here..." name="keyword">
-                        <span>
-                            <input class="active" type="submit" value="Search">
-                          </span>
-                    </div>
-                </form>
-            </li>
-
-            </ul>
-            <!-- <img src="{% static 'images/iu.jpg' %}" width="100" height="100"> -->
-        </body>
-
-        {% load static %}
-        <link rel="stylesheet" href="{% static 'blog/transit_image.css' %}" />
-
-        <body>
-            <div class="title-box">
-            <marquee scollamount="10" direction="left">
-                <div class="neon">
-                    <h1>A N I C H E C K .</h1>
-                    <span class="gradient"></span>
-                    <span class="spotlight"></span>
+  <body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+      <a href="{% url 'blog:index' %}" class="navbar-brand">Anicheck</a>
+      <button
+        class="navbar-toggler"
+        data-toggle="collapse"
+        data-target="#navbarMenu"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarMenu">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a href="{% url 'blog:contact' %}" class="nav-link">About us</a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'blog:reviews' %}" class="nav-link">Reviews</a>
+          </li>
+          {% if user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{% url 'blog:profile' pk=user.pk %}" class="nav-link"
+              >Profile</a
+            >
+          </li>
+          {% endif %} {% if user.is_authenticated %}
+          <li class="logout-btn">
+            <a href="{% url 'login' %}" class="nav-link">Logout</a>
+          </li>
+          <li>
+            <form action="{% url 'blog:search' %}" method="get">
+              <div class="input-group">
+                <div class="search-text">
+                  <input
+                    type="text"
+                    style="width: 400px"
+                    placeholder="Find your fav anime here..."
+                    name="keyword"
+                  />
                 </div>
-            </marquee>
-            </div>
+                <span>
+                  <input class="active search" type="submit" value="Search" />
+                </span>
+              </div>
+            </form>
+          </li>
+          {% else %}
+          <li class="login-btn">
+            <a href="{% url 'login' %}" class="nav-link">Login</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
 
-      
-        
-    </ul>
-  
-</body>
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
 
-{% block content %} {% endblock %}
+    <style>
+      .search-text {
+        margin-top: 5px;
+        margin-left: 10px;
+      }
+
+      .search {
+        margin-top: 5px;
+        margin-left: 10px;
+      }
+
+      .search:hover {
+        background-color: green;
+        color: white;
+      }
+    </style>
+
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'blog/transit_image.css' %}" />
+
+    {% block content %}{% endblock %}
+  </body>
+</html>

@@ -2,43 +2,191 @@
 
 
 {% block content %}
+
+<html>
 {% load static %}
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'blog/transit_image.css' %}">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            background-color: white !important;
+        }
+
+        p {
+            color: #AEAEAE;
+        }
+
+        h1,
+        h2,
+        h3 {
+            color: grey;
+        }
+
+        h3 {
+            border-bottom: 1.5px solid grey;
+            font-size: 20px;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+        }
+
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .column {
+            float: left;
+            width: 33.3%;
+            margin-bottom: 16px;
+            padding: 0 8px;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            margin: 8px;
+        }
+
+        .about-section {
+            padding: 50px;
+            text-align: center;
+            background-color: #474e5d;
+            color: white;
+        }
+
+        .container {
+            padding: 0 16px;
+        }
+
+        .container::after,
+        .row::after {
+            content: "";
+            clear: both;
+            display: table;
+        }
+
+        .title {
+            color: grey;
+        }
+
+        .button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        .button:hover {
+            background-color: #555;
+        }
+
+        @media screen and (max-width: 650px) {
+            .column {
+                width: 100%;
+                display: block;
+            }
+        }
+    </style>
+</head>
+
 <body>
-<link rel="stylesheet" href="{% static 'blog/transit_image.css' %}">
+    <div class="container">
+        <br><br><br><h1 style="font-size: 50px; border-bottom: 1.5px solid grey;"><b>About Us</b></h1>
+        <p>Web application for people who are interested and love to watch Japanese animation. The main purpose of our
+            application is to support the copyright of Japanese animation. We hope that our web application will give
+            encouragement to every animation maker.</p>
+        <br><br>
+        <h2 style="border-bottom: 1.5px solid grey;"><b>Vision</b></h2>
+        <p>For the people who want to find some copyright sources of the anime that they are interested in,
+            and want to create their favorite anime list. They will know some detail about that anime such as the number
+            of episodes,
+            some main characters, etc. They can also see some reviews of that anime by the other users that will help
+            them get more information about that anime.</p>
+        <br><br>
+        <h2 style="border-bottom: 1.5px solid grey;"><b>Development Team</b></h2>
+        <div class="row">
+            <div class="column">
+                <div class="card">
+                    <img src="https://avatars.githubusercontent.com/u/58978730?v=4" alt="Bannakorn" style="width:100%">
+                    <div class="container">
+                        <br><h2>Bannakorn</h2>
+                        <h3>INLAPAORANKUL</h3>
+                        <p class="title">Backend Developer</p>
+                        <p>Software Engineering, Kasetsart University</p>
+                        <p>bannakorn.s@ku.th</p>
+                    </div>
+                </div>
+            </div>
 
-<h2>About us </h2>
-<div>Web application for people who are interested and love to watch Japanese animation. The main purpose of our
-    application is to support the copyright of Japanese animation. We hope that our web application will give
-    encouragement to every animation maker.
-</div>
-<br>
-<div>Development team</div>
+            <div class="column">
+                <div class="card">
+                    <img src="https://avatars.githubusercontent.com/u/73125941?v=4" alt="Chonchanok" style="width:100%">
+                    <div class="container">
+                        <br><h2>Chonchanok</h2>
+                        <h3>CHEVAISRAKUL</h3>
+                        <p class="title">Backend Developer</p>
+                        <p>Software Engineering, Kasetsart University</p>
+                        <p>chonchanok.che@ku.th</p>
+                    </div>
+                </div>
+            </div>
 
-<br>
-<img src="https://avatars.githubusercontent.com/u/58978730?v=4.jpg" alt="Hi user" height=”200px” width=”200px”>
-<div>Bannakorn Sinlapaorankul<a style="text-decoration:none" href="https://github.com/borrabeam">Github</a></div>
-<div>Email: <a style="text-decoration:none"  href="mailto: bannakorn.s@ku.th" target="_blank">bannakorn.s@ku.th</a></div>
-<br>
+            <div class="column">
+                <div class="card">
+                    <img src="https://avatars.githubusercontent.com/u/78130311?s=400&u=69ad70e50318d341e796becdbfa38623e00f0514&v=4"
+                        alt="Phinyaphak" style="width:100%">
+                    <div class="container">
+                        <br><h2>Phinyaphak</h2>
+                        <h3>CHIRADEJTHANANKORN</h3>
+                        <p class="title">Frontend Developer</p>
+                        <p>Software Engineering, Kasetsart University</p>
+                        <p>phinyaphak.c@ku.th</p>
+                    </div>
+                </div>
+            </div>
 
+            <div class="column">
+                <div class="card">
+                    <img src="https://avatars.githubusercontent.com/u/59834347?v=4" alt="Setthanat" style="width:100%">
+                    <div class="container">
+                        <br><h2>Setthanat</h2>
+                        <h3>KLADEE</h3>
+                        <p class="title">Backend Developer</p>
+                        <p>Software Engineering, Kasetsart University</p>
+                        <p>phinyaphak.c@ku.th</p>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-<img src="https://scontent.fbkk14-1.fna.fbcdn.net/v/t1.6435-9/57360267_2649727101768743_2069691130160611328_n.jpg?_nc_cat=106&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=OaKiBop_9tUAX8i3rBk&_nc_ht=scontent.fbkk14-1.fna&oh=65939b6fad15053d4707a98283b18dea&oe=61B6B871" alt="Hi user" height=”200px” width=”200px”>
-<div>Chonchanok Chevaisrakul<a style="text-decoration:none"  href="https://github.com/boom210232">Github</a></div>
-<div>Email: <a style="text-decoration:none" href="mailto: chonchanok.che@ku.th" target="_blank">chonchanok.che@ku.th</a></div>
-
-
-<br>
-<img src="https://avatars.githubusercontent.com/u/78130311?v=4" alt="Hi user" height=”200px” width=”200px”>
-<div>Phinyaphak Chiradejthanankorn<a style="text-decoration:none" href="https://github.com/vnsvakanda">Github</a></div>
-<div>Email: <a style="text-decoration:none" href="mailto: phinyaphak.c@ku.th" target="_blank">phinyaphak.c@ku.th</a></div>
-
-
-<br>
-<img src="https://scontent.fbkk10-1.fna.fbcdn.net/v/t1.6435-9/103337462_2045626758915570_6889738993765404799_n.jpg?_nc_cat=110&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=9w3uz-PwX1EAX_mLgWU&_nc_ht=scontent.fbkk10-1.fna&oh=7ab1d82fd7922e9baa500e602d2695f9&oe=61B5DC75" alt="Hi user" height=”200px” width=”200px”>
-<div>Setthanat Kladee<a style="text-decoration:none" href="https://github.com/ing140943">Github</a></div>
-<div>Email: <a style="text-decoration:none" href="mailto: setthanat.k@ku.th" target="_blank">setthanat.k@ku.th</a></div>
 
 
 
 </body>
-{% endblock %}
 
+</html>
+
+{% endblock %}
