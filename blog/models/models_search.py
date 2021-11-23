@@ -26,6 +26,7 @@ async def anime_search(query):
         response = requests.get(use_url)
  
         demo[anime.title] = {
+            "names": anime.title,
             "sub-type": anime.subtype,
             "status": anime.status,
             "synopsis": anime.synopsis,
