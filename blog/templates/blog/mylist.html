@@ -1,0 +1,17 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h2> List of most favorite</h2>
+    {% if mylist %}
+        {% for mylist in mylists %}
+            <div>
+                <h1>{{ mylist.title }}</h1>
+            </div>
+            <hr>
+        {% endfor %}
+
+    {% else %}
+        <h1>No favorite add here yet, Find some and add it!!!</h1>
+    {% endif %}
+{% endblock %}
+
+
