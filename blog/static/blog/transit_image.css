@@ -49,8 +49,10 @@
   color: #fff;
   font-size: 50px;
   padding: 18px;
-  text-align:center;
+  text-align: center;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
 }
+
 .caption p {
   max-width: 600px;
   width: 90%;

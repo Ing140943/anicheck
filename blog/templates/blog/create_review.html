@@ -1,17 +1,75 @@
-{% extends "blog/base.html" %}
-{% block content %}
-<div class="col-md-8">
-    <div class="card mb-4 mt-4">
-        <div class="card-header">
-        </div>
-        <div class="card-body">
-            <form enctype="multipart/form-data" method="POST">
-                {% csrf_token %}
-                {{ form.media }}
-                {{ form.as_p }}
-                <button type="submit" class="btn btn-primary"><a href="{% url 'blog:reviews' %}">ok</a></button>
-            </form>
+{% extends "blog/base.html" %} {% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<body>
+    <h2>Contact Form</h2>
+    <div class="create-container">
+        <div class="col-md-8">
+            <div class="card mb-4 mt-4">
+                <div class="card-header"></div>
+                <div class="card-body">
+                    <form enctype="multipart/form-data" method="POST">
+                        {% csrf_token %} {{ form.media }} <br />
+                        {{ form.as_p }} <br /><br />
+                        <input type="submit" class="btn-primary">
+                        <a href="{% url 'blog:reviews' %}"> </a>
+                        </input>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-</div>
+
+    <style>
+
+        h2 {
+            margin: 20px;
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .create-container [type="text"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            resize: vertical;
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .create-container [type="submit"] {
+            background-color: #04aa6d;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .create-container [type="submit"]:hover {
+            background-color: #45a049;
+            font-family: 'Comfortaa', cursive;
+        }
+
+        .create-container {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            margin: 20px;
+            font-family: 'Comfortaa', cursive;
+        }
+    </style>
+</body>
+</head>
+
+</html>
+
 {% endblock %}

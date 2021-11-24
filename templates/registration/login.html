@@ -1,35 +1,111 @@
 {% extends "blog/base.html" %} {% block content %}
 
 <html>
-  <body>
-    <style>
-      h3 {
-        margin-top: 100px;
-        font-size: 32px;
-        font-weight: 500;
-        line-height: 42px;
-        text-align: center;
-      }
 
-      p {
-        text-align: center;
-      }
-    </style>
-    <h3>Login</h3>
-    <br /><br />
-    <form method="post">
-      {% csrf_token %} {{ form.as_p }}
-      <br />
-      <p>
-        <button type="submit">Login</button>
-      </p>
-      <input type="hidden" name="next" value="{{next}}" />
-    </form>
-    {# If you have written a password_reset template, then add here #}
-    <p>
-      <a href="{% url 'signup' %}">Don't have an account ? Register</a>
-    </p>
-  </body>
+<body>
+  <style>
+    h3 {
+      padding-top: 20px;
+      font-size: 32px;
+      font-weight: 500;
+      line-height: 42px;
+      text-align: center;
+      font-family: 'Comfortaa', cursive;
+    }
 
-  {% endblock %}
+    p {
+      text-align: center;
+      font-family: 'Comfortaa', cursive;
+    }
+
+    body,
+    html {
+      height: 100%;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    .bg-img {
+      /* The image used */
+      background-image: url("https://c4.wallpaperflare.com/wallpaper/365/244/884/uchiha-itachi-naruto-shippuuden-anbu-silhouette-wallpaper-preview.jpg");
+
+      /* Control the height of the image */
+      height: 100%;
+
+      /* Center and scale the image nicely */
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      position: relative;
+    }
+
+    /* Add styles to the form container */
+    .container {
+      position: absolute;
+      right: 0;
+      margin: 20px;
+      margin-top: 100px;
+      margin-right: 80px;
+      max-width: 300px;
+      max-height: 600px;
+      padding: 16px;
+      background-color: white;
+    }
+
+    /* Set a style for the submit button */
+    .btn {
+      background-color: #04AA6D;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      width: 15%;
+      opacity: 0.9;
+      font-size: 14px;
+      font-family: 'Comfortaa', cursive;
+    }
+
+    .btn:hover {
+      opacity: 1;
+    }
+
+    input[type=text]:focus,
+    input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    .form-edit {
+      padding: 10px;
+      margin: 0px 400px 0px 400px;
+      font-family: 'Comfortaa', cursive;
+    }
+
+    a {
+      font-size: 12.5px;
+      font-family: 'Comfortaa', cursive;
+    }
+    
+  </style>
+
+  <div class="bg-img">
+      <h3>Login</h3>
+      <br /><br />
+      <form class="form-edit" method="post">
+          {% csrf_token %} {{ form.as_p }}
+        <br />
+        <p>
+          <button class="btn" type="submit">Login</button>
+          <br><br><a href="{% url 'signup' %}">Don't have an account ? Register</a>
+        </p>
+        <input type="hidden" name="next" value="{{next}}" />
+      </form>
+      {# If you have written a password_reset template, then add here #}
+</body>
+</div>
+
+{% endblock %}
+
 </html>

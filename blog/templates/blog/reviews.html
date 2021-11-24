@@ -1,35 +1,71 @@
 {% extends "blog/base.html" %} {% block content %}
+<html>
 
-<style>
-  h3 {
-    text-align: center;
-    margin-top: 100px;
-  }
-</style>
-{% if reviews %} {% for review in reviews %}
-<div>
-  <h1>Title: {{ review.title }}</h1>
-  <h2>Author: {{ review.author.username }}</h2>
-  <p>Body: {{ review.body|safe }}</p>
-</div>
-<hr />
-{% endfor %} {% if is_paginated %}
-<!-- Pagination -->
-<ul>
-  {% if page_obj.has_previous %}
-  <li>
-    <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
-      >&larr; Newer</a
-    >
-  </li>
-  {% endif %} {% if page_obj.has_next %}
-  <li>
-    <a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a>
-  </li>
-  {% endif %}
-</ul>
-{% endif %} {% else %}
-<marquee direction="right">
-  <h3>NO REVIEW YET</h3>
-</marquee>
-{% endif %} {% endblock %}
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Codystar&family=Comfortaa&family=Cutive+Mono&family=Dokdo&family=Finger+Paint&family=Indie+Flower&family=Lexend+Mega&family=Londrina+Outline&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&family=Short+Stack&family=Yomogi&display=swap"
+    rel="stylesheet">
+  <style>
+    h3 {
+      text-align: center;
+      margin-top: 100px;
+      font-family: 'Comfortaa', cursive;
+    }
+
+    h1 {
+      margin-top: 60px;
+      margin-bottom: 20px;
+      font-family: 'Comfortaa', cursive;
+      font-weight: 700;
+    }
+
+    h2,
+    p {
+      margin-bottom: 10px;
+      text-align: center;
+      font-family: 'Comfortaa', cursive;
+    }
+
+    h2 {
+      color: pink;
+    }
+
+    p {
+      color: powderblue;
+    }
+
+    .text-hover:hover {
+      color: red;
+    }
+  </style>
+  {% if reviews %} {% for review in reviews %}
+  <div>
+    <marquee direction="right">
+      <h1>Title: {{ review.title }}</h1>
+    </marquee>
+    <h2>Author: {{ review.author.username }}</h2>
+    <p class="text-hover">Body: {{ review.body|safe }}</p>
+  </div>
+  <hr />
+  {% endfor %} {% if is_paginated %}
+  <!-- Pagination -->
+  <ul>
+    {% if page_obj.has_previous %}
+    <li>
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Newer</a>
+    </li>
+    {% endif %} {% if page_obj.has_next %}
+    <li>
+      <a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a>
+    </li>
+    {% endif %}
+  </ul>
+  {% endif %} {% else %}
+  <marquee direction="right">
+    <h3>NO REVIEW YET</h3>
+  </marquee>
+  {% endif %} {% endblock %}
+</head>
+</head>

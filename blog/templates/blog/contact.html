@@ -1,192 +1,262 @@
-{% extends "blog/base.html" %}
+{% extends "blog/base.html" %} {% block content %}
+<style>
+  body {
+    background-color: white !important;
+    font-family: 'Comfortaa', cursive;
+  }
 
+  p {
+    color: #aeaeae;
+    font-family: 'Comfortaa', cursive;
+  }
 
-{% block content %}
+  h1,
+  h2,
+  h3 {
+    color: grey;
+    font-family: 'Comfortaa', cursive;
+  }
 
-<html>
-{% load static %}
+  h3 {
+    border-bottom: 1.5px solid grey;
+    font-size: 20px;
+    font-family: 'Comfortaa', cursive;
+  }
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
-        integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="{% static 'blog/transit_image.css' %}">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
-        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <style>
-        body {
-            background-color: white !important;
-        }
+  body {
+    margin: 0;
+    font-family: 'Comfortaa', cursive;
+  }
 
-        p {
-            color: #AEAEAE;
-        }
+  html {
+    box-sizing: border-box;
+  }
 
-        h1,
-        h2,
-        h3 {
-            color: grey;
-        }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
 
-        h3 {
-            border-bottom: 1.5px solid grey;
-            font-size: 20px;
-        }
+  .column {
+    float: left;
+    width: 33.3%;
+    margin-bottom: 16px;
+    padding: 0 8px;
+  }
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            margin: 0;
-        }
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    margin: 8px;
+  }
 
-        html {
-            box-sizing: border-box;
-        }
+  .about-section {
+    padding: 50px;
+    text-align: center;
+    background-color: #474e5d;
+    color: white;
+  }
 
-        *,
-        *:before,
-        *:after {
-            box-sizing: inherit;
-        }
+  .container {
+    padding: 0 16px;
+  }
 
-        .column {
-            float: left;
-            width: 33.3%;
-            margin-bottom: 16px;
-            padding: 0 8px;
-        }
+  .container::after,
+  .row::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 
-        .card {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-            margin: 8px;
-        }
+  .title {
+    color: grey;
+  }
 
-        .about-section {
-            padding: 50px;
-            text-align: center;
-            background-color: #474e5d;
-            color: white;
-        }
+  .button {
+    border: none;
+    outline: 0;
+    display: inline-block;
+    padding: 8px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-family: 'Comfortaa', cursive;
+  }
 
-        .container {
-            padding: 0 16px;
-        }
+  .button:hover {
+    background-color: #555;
+  }
 
-        .container::after,
-        .row::after {
-            content: "";
-            clear: both;
-            display: table;
-        }
+  @media screen and (max-width: 650px) {
+    .column {
+      width: 100%;
+      display: block;
+    }
+  }
 
-        .title {
-            color: grey;
-        }
+  img:hover {
+    /* Start the shake animation and make the animation last for 0.5 seconds */
+    animation: shake 0.5s;
 
-        .button {
-            border: none;
-            outline: 0;
-            display: inline-block;
-            padding: 8px;
-            color: white;
-            background-color: #000;
-            text-align: center;
-            cursor: pointer;
-            width: 100%;
-        }
+    /* When the animation is finished, start again */
+    animation-iteration-count: infinite;
+  }
 
-        .button:hover {
-            background-color: #555;
-        }
+  @keyframes shake {
+    0% {
+      transform: translate(1px, 1px) rotate(0deg);
+    }
 
-        @media screen and (max-width: 650px) {
-            .column {
-                width: 100%;
-                display: block;
-            }
-        }
-    </style>
-</head>
+    10% {
+      transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+      transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+      transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+      transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+      transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+      transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+      transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+      transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+      transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+      transform: translate(1px, -2px) rotate(-1deg);
+    }
+  }
+</style>
+
+<!-- Add icon library -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+/>
 
 <body>
-    <div class="container">
-        <br><br><br><h1 style="font-size: 50px; border-bottom: 1.5px solid grey;"><b>About Us</b></h1>
-        <p>Web application for people who are interested and love to watch Japanese animation. The main purpose of our
-            application is to support the copyright of Japanese animation. We hope that our web application will give
-            encouragement to every animation maker.</p>
-        <br><br>
-        <h2 style="border-bottom: 1.5px solid grey;"><b>Vision</b></h2>
-        <p>For the people who want to find some copyright sources of the anime that they are interested in,
-            and want to create their favorite anime list. They will know some detail about that anime such as the number
-            of episodes,
-            some main characters, etc. They can also see some reviews of that anime by the other users that will help
-            them get more information about that anime.</p>
-        <br><br>
-        <h2 style="border-bottom: 1.5px solid grey;"><b>Development Team</b></h2>
-        <div class="row">
-            <div class="column">
-                <div class="card">
-                    <img src="https://avatars.githubusercontent.com/u/58978730?v=4" alt="Bannakorn" style="width:100%">
-                    <div class="container">
-                        <br><h2>Bannakorn</h2>
-                        <h3>INLAPAORANKUL</h3>
-                        <p class="title">Backend Developer</p>
-                        <p>Software Engineering, Kasetsart University</p>
-                        <p>bannakorn.s@ku.th</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="card">
-                    <img src="https://avatars.githubusercontent.com/u/73125941?v=4" alt="Chonchanok" style="width:100%">
-                    <div class="container">
-                        <br><h2>Chonchanok</h2>
-                        <h3>CHEVAISRAKUL</h3>
-                        <p class="title">Backend Developer</p>
-                        <p>Software Engineering, Kasetsart University</p>
-                        <p>chonchanok.che@ku.th</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="card">
-                    <img src="https://avatars.githubusercontent.com/u/78130311?s=400&u=69ad70e50318d341e796becdbfa38623e00f0514&v=4"
-                        alt="Phinyaphak" style="width:100%">
-                    <div class="container">
-                        <br><h2>Phinyaphak</h2>
-                        <h3>CHIRADEJTHANANKORN</h3>
-                        <p class="title">Frontend Developer</p>
-                        <p>Software Engineering, Kasetsart University</p>
-                        <p>phinyaphak.c@ku.th</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="card">
-                    <img src="https://avatars.githubusercontent.com/u/59834347?v=4" alt="Setthanat" style="width:100%">
-                    <div class="container">
-                        <br><h2>Setthanat</h2>
-                        <h3>KLADEE</h3>
-                        <p class="title">Backend Developer</p>
-                        <p>Software Engineering, Kasetsart University</p>
-                        <p>phinyaphak.c@ku.th</p>
-                    </div>
-                </div>
-            </div>
+  <div class="container">
+    <br /><br><br>
+    <h1 style="font-size: 35px; border-bottom: 1.5px solid grey">
+      <b>About Us</b>
+    </h1>
+    <br>
+    <p>
+      Web application for people who are interested and love to watch Japanese
+      animation. The main purpose of our application is to support the copyright
+      of Japanese animation. We hope that our web application will give
+      encouragement to every animation maker.
+    </p>
+    <br /><br />
+    <h2 style="border-bottom: 1.5px solid grey"><b>Vision</b></h2>
+    <br>
+    <p>
+      For the people who want to find some copyright sources of the anime that
+      they are interested in, and want to create their favorite anime list. They
+      will know some detail about that anime such as the number of episodes,
+      some main characters, etc. They can also see some reviews of that anime by
+      the other users that will help them get more information about that anime.
+    </p>
+    <br /><br />
+    <h2 style="border-bottom: 1.5px solid grey"><b>Development Team</b></h2>
+    <br />
+    <div class="row">
+      <div class="column">
+        <div class="card">
+          <img
+            src="https://avatars.githubusercontent.com/u/58978730?v=4"
+            alt="Bannakorn"
+            style="width: 100%"
+          />
+          <div class="container">
+            <br />
+            <h2>Bannakorn</h2>
+            <h3>INLAPAORANKUL</h3>
+            <br><p class="title">Backend Developer</p>
+            <p>Software Engineering, Kasetsart University</p>
+            <p>bannakorn.s@ku.th</p><br>
+          </div>
         </div>
+      </div>
 
+      <div class="column">
+        <div class="card">
+          <img
+            src="https://avatars.githubusercontent.com/u/73125941?v=4"
+            alt="Chonchanok"
+            style="width: 100%"
+          />
+          <div class="container">
+            <br />
+            <h2>Chonchanok</h2>
+            <h3>CHEVAISRAKUL</h3>
+            <br><p class="title">Backend Developer</p>
+            <p>Software Engineering, Kasetsart University</p>
+            <p>chonchanok.che@ku.th</p><br>
+          </div>
+        </div>
+      </div>
 
+      <div class="column">
+        <div class="card">
+          <img
+            src="https://avatars.githubusercontent.com/u/78130311?s=400&u=69ad70e50318d341e796becdbfa38623e00f0514&v=4"
+            alt="Phinyaphak"
+            style="width: 100%"
+          />
+          <div class="container">
+            <br />
+            <h2>Phinyaphak</h2>
+            <h3>CHIRADEJTHANANKORN</h3>
+            <br><p class="title">Frontend Developer</p>
+            <p>Software Engineering, Kasetsart University</p>
+            <p>phinyaphak.c@ku.th</p><br>
+          </div>
+        </div>
+      </div>
 
+      <div class="column">
+        <div class="card">
+          <img
+            src="https://avatars.githubusercontent.com/u/59834347?v=4"
+            alt="Setthanat"
+            style="width: 100%"
+          />
+          <div class="container">
+            <br />
+            <h2>Setthanat</h2>
+            <h3>KLADEE</h3>
+            <br><p class="title">Backend Developer</p>
+            <p>Software Engineering, Kasetsart University</p>
+            <p>phinyaphak.c@ku.th</p><br>
+          </div>
+        </div>
+      </div>
+    </div>
 
+    {% endblock%}
+  </div>
 </body>
-
-</html>
-
-{% endblock %}
