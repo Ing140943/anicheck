@@ -51,3 +51,5 @@ def charfield(request):
 def review_anime(request):
     return render(request, 'blog/review.html')
 
+def mylist_anime(request):
+    return render(request,'blog/mylist.html')

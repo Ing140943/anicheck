@@ -18,7 +18,7 @@
         <body>
             <ul>
             <li><a href="{% url 'blog:index' %}">Home</a></li>
-            <li><a href="#mylist">MyList</a></li>
+            <li><a href="{% url 'blog:mylist' %}">MyList</a></li>
             <li><a href="{% url 'blog:reviews' %}">Reviews</a></li>
             <li><a href="{% url 'blog:create-review' %}">Create review</a></li>
             {% if user.is_authenticated %}
