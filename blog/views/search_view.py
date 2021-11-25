@@ -38,6 +38,7 @@ async def kitsu_search(request):
     loop.create_task(blog.models.models_search.anime_search_title(keyword))
     # print(blog.models.api_uses(title))
     data = loop.run_until_complete(asyncio.gather(blog.models.models_search.anime_search_title(keyword)))[0]
+    print(data)
     return render(request, 'blog/search.html', context={'title_list': data})
 
 
@@ -51,5 +52,4 @@ def charfield(request):
 def review_anime(request):
     return render(request, 'blog/review.html')
 
-def mylist_anime(request):
-    return render(request,'blog/mylist.html')
+

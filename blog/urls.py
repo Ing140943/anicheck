@@ -6,7 +6,7 @@ import blog.views.search_view
 import blog.views.review_view
 import blog.views.about_us_view
 import blog.views.user_view
-
+import blog.views.my_list_view
 
 app_name = 'blog'
 
@@ -20,5 +20,5 @@ urlpatterns = [
     path('contact/', blog.views.about_us_view.about_us, name='contact'),
     path('profile/<int:pk>', blog.views.user_view.ProfilePageView.as_view(), name='profile'),
     path('profile/edit', blog.views.user_view.update_user, name='profile-edit'),
-    path('profile/mylist',blog.views.search_view.mylist_anime, name='mylist')
+    path('profile/mylist',blog.views.my_list_view.mylist_anime, name='mylist')
 ]
