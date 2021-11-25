@@ -3,12 +3,14 @@
 <h2>MyList</h2>
 
     {% if object_list %}
-        {% for title in object_list %}
-            <div>
-                <a href="{% url 'blog:kitsu' title=title %}"><div><h1>{{ title }}</h1></div></a>
-                <a href="{% url 'blog:remove-mylist' title=title pk=user.pk %}"><div><h1>-</h1></div></a></button>
-            </div>
-        {% endfor %}
+        <table>
+            {% for title in object_list %}
+                <tr>
+                    <td><a href="{% url 'blog:kitsu' title=title %}"><h1>{{ title }}</h1></a></td>
+                    <td><button><a href="{% url 'blog:remove-mylist' title=title pk=user.pk %}"><h1>[remove]</h1></a></button></td>
+                </tr>
+            {% endfor %}
+        </table>
     {% else %}
         <h1>No favorite add here yet, Find some and add it!!!</h1>
     {% endif %}
