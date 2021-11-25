@@ -20,5 +20,5 @@ urlpatterns = [
     path('contact/', blog.views.about_us_view.about_us, name='contact'),
     path('profile/<int:pk>', blog.views.user_view.ProfilePageView.as_view(), name='profile'),
     path('profile/edit', blog.views.user_view.update_user, name='profile-edit'),
-    path('profile/mylist',blog.views.my_list_view.get_title_to_list, name='mylist')
+    path('profile/mylist',blog.views.my_list_view.mylist_anime, name='mylist')
 ]
