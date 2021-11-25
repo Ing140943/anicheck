@@ -12,8 +12,9 @@ my_list = []
 def mylist_anime(request):
     return render(request,'blog/mylist.html')
 
-def get_title_to_list(request, anime_title=None):
+# def get_title_to_list(request):
+#     anime_title = request.GET('title', None)
 
-    if anime_title not in my_list:
-        my_list.append(anime_title)
-    return render(request, 'blog/mylist.html', context={'anime_title': my_list} )
+#     if anime_title not in my_list:
+#         my_list.append(anime_title)
+#     return render(request, 'blog/mylist.html', context={'anime_title': my_list} )

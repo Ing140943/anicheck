@@ -29,6 +29,7 @@ async def kitsu(request, title):
         "age_rating": data[next(iter(data))]['age-rating'],
         "popularity": data[next(iter(data))]['popularity'],
         "rating": data[next(iter(data))]['rating'],
+        "image" : data[next(iter(data))]['images'],
     })
 
 
