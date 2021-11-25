@@ -20,8 +20,8 @@ async def kitsu(request, title):
     loop.create_task(blog.models.models_search.anime_search(title))
     # print(blog.models.api_uses(title))
     data = loop.run_until_complete(asyncio.gather(blog.models.models_search.anime_search(title)))[0]
-    print(data)
     return render(request, 'blog/show_detail.html', context={
+        "title": data[next(iter(data))]['names'],
         "sub_type": data[next(iter(data))]['sub-type'],
         "status": data[next(iter(data))]['status'],
         "synopsis": data[next(iter(data))]['synopsis'],

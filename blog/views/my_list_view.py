@@ -8,13 +8,12 @@ import nest_asyncio
 from ..forms import CharFieldForm
 nest_asyncio.apply()
 
-
+my_list = []
 def mylist_anime(request):
     return render(request,'blog/mylist.html')
 
-# async def get_title_to_list(request, anime_title):
-#     keyword = request.GET[anime_title]
-#     loop = asyncio.get_event_loop()
-#     loop.create_task(blog.models.models_search.anime_search_title(keyword))
-#     data = loop.run_until_complete(asyncio.gather(blog.models.models_search.anime_search_title(keyword)))[0]
-#     return render(request, 'blog/show_detail.html', context={'anime_title': data
+def get_title_to_list(request, anime_title=None):
+
+    if anime_title not in my_list:
+        my_list.append(anime_title)
+    return render(request, 'blog/mylist.html', context={'anime_title': my_list} )
