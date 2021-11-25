@@ -1,15 +1,17 @@
 {% extends "blog/base.html" %}
 {% block content %}
-<h2> List of most favorite</h2>
-<h3>Title : {{ title }}</h3>
-    {% if anime_title %}
-    {% for title in anime_title %}
-        <div><h1>{{ title }}</h1></div>
-    {% endfor %}
+<h2>MyList</h2>
 
+    {% if object_list %}
+        {% for title in object_list %}
+            <div>
+                <a href="{% url 'blog:kitsu' title=title %}"><div><h1>{{ title }}</h1></div></a>
+                <a href="{% url 'blog:remove-mylist' title=title pk=user.pk %}"><div><h1>-</h1></div></a></button>
+            </div>
+        {% endfor %}
     {% else %}
         <h1>No favorite add here yet, Find some and add it!!!</h1>
-        {% endif %}
+    {% endif %}
     
 {% endblock %}
 
