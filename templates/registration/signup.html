@@ -4,24 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Login</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Codystar&family=Comfortaa&family=Cutive+Mono&family=Dokdo&family=Finger+Paint&family=Indie+Flower&family=Lexend+Mega&family=Londrina+Outline&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&family=Short+Stack&family=Yomogi&display=swap"
+      rel="stylesheet"
+    />
+    <title>Register</title>
   </head>
 
   <script>
-    /*
-    SignUP
-*/
     const close = document.querySelector(".message-close");
     const message = document.querySelector(".messages");
 
     if (close && message) {
-      //Close Error/Success Message
       close.addEventListener("click", () => {
         message.style.display = "none";
       });
     }
 
-    //Form Validation
     const signupForm = document.getElementById("signup-form");
 
     signupForm.addEventListener("submit", (e) => {
@@ -40,19 +39,16 @@
   </script>
 
   <style>
-    /*####################
-GLOBAL
-##############*/
-
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      color: white;
     }
 
     :root {
-      --bl-color: #171717;
-      --blue-color: #203bd4;
+      --bl-color: white;
+      --blue-color: #04aa6d;
       --lt-color: #ededed;
       --text-fs: 16px;
       --title-fs: 34px;
@@ -82,6 +78,7 @@ GLOBAL
       width: 50%;
       min-width: 320px;
       padding: 10%;
+      background-image: url("https://images5.alphacoders.com/909/thumb-1920-909769.png");
     }
 
     .text-center {
@@ -119,10 +116,6 @@ GLOBAL
       max-height: 50px;
     }
 
-    /*####################
-LOGIN
-##############*/
-
     .title {
       font-size: calc(var(--title-fs) + 6 * ((100vw - 320px) / 680));
       text-transform: uppercase;
@@ -143,7 +136,7 @@ LOGIN
       padding: 10px;
       border-radius: 10px;
       font-weight: bold;
-      color: var(--bl-color);
+      color: black;
       cursor: pointer;
     }
 
@@ -195,6 +188,7 @@ LOGIN
       width: 90%;
       transform: translate(+5%, -5%);
       margin-top: 50px;
+      font-size: 14px;
     }
 
     .submit:hover {
@@ -210,10 +204,10 @@ LOGIN
       bottom: 5%;
       left: 50%;
       transform: translateX(-50%);
-      font-size: x-small;
+      font-size: 16px;
     }
 
-    .link {
+    .glow .link {
       text-decoration: none;
       cursor: pointer;
       font-weight: bolder;
@@ -223,10 +217,6 @@ LOGIN
     .card {
       margin-block: -20px;
     }
-
-    /*####################
-SIGNUP
-##############*/
 
     .messages {
       display: none;
@@ -261,7 +251,7 @@ SIGNUP
     }
 
     .error:hover {
-      background-color: #f0c419;
+      background-color: #b1dcc0;
     }
 
     @media screen and (max-width: 900px) {
@@ -271,13 +261,28 @@ SIGNUP
       }
     }
 
-    /*####################
-RESET PASSWORD
-##############*/
-
     .mute-paragraph {
       font-size: 12px;
       opacity: 0.8;
+    }
+
+    .glow{
+      font-size: 14px;
+      color: #fff;
+      text-align: center;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #b1dcc0,
+          0 0 60px #b1dcc0, 0 0 70px #b1dcc0, 0 0 80px #b1dcc0, 0 0 90px #b1dcc0;
+      }
+
+      to {
+        text-shadow: 0 0 20px #fff, 0 0 30px #04aa6d, 0 0 40px #04aa6d,
+          0 0 50px #04aa6d, 0 0 60px #04aa6d, 0 0 70px #04aa6d, 0 0 80px #04aa6d;
+      }
     }
   </style>
 
@@ -355,7 +360,9 @@ RESET PASSWORD
     </div>
 
     <div class="redirect">
-      Already have an account?&nbsp;<a href="{% url 'login' %}" class="link"
+      Already have an account?&nbsp;<a
+        href="{% url 'login' %}"
+        class="glow" style="font-size: 16px;"
         >Login</a
       >
       <br /><br />

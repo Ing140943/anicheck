@@ -5,17 +5,20 @@
 <body>
   <style>
     h3 {
-      padding-top: 20px;
-      font-size: 32px;
-      font-weight: 500;
+      padding-top: 90px;
+      padding-bottom: 60px;
+      font-size: 52px;
+      font-weight: 550;
       line-height: 42px;
       text-align: center;
-      font-family: 'Comfortaa', cursive;
+      font-family: "Raleway", sans-serif;
+      color: white;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
 
     p {
       text-align: center;
-      font-family: 'Comfortaa', cursive;
+      font-family: "Raleway", sans-serif;
     }
 
     body,
@@ -28,20 +31,16 @@
     }
 
     .bg-img {
-      /* The image used */
-      background-image: url("https://c4.wallpaperflare.com/wallpaper/365/244/884/uchiha-itachi-naruto-shippuuden-anbu-silhouette-wallpaper-preview.jpg");
+      background-image: url("https://images5.alphacoders.com/909/thumb-1920-909769.png");
 
-      /* Control the height of the image */
       height: 100%;
 
-      /* Center and scale the image nicely */
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
       position: relative;
     }
 
-    /* Add styles to the form container */
     .container {
       position: absolute;
       right: 0;
@@ -54,7 +53,18 @@
       background-color: white;
     }
 
-    /* Set a style for the submit button */
+    .container:hover {
+      position: absolute;
+      right: 0;
+      margin: 20px;
+      margin-top: 100px;
+      margin-right: 80px;
+      max-width: 300px;
+      max-height: 600px;
+      padding: 16px;
+      background-color: #ccc;
+    }
+
     .btn {
       background-color: #04AA6D;
       color: white;
@@ -62,47 +72,117 @@
       padding: 10px;
       cursor: pointer;
       width: 15%;
-      opacity: 0.9;
+      opacity: 0.8;
       font-size: 14px;
-      font-family: 'Comfortaa', cursive;
+      font-family: "Raleway", sans-serif;
     }
 
     .btn:hover {
       opacity: 1;
     }
 
-    input[type=text]:focus,
-    input[type=password]:focus {
-      background-color: #ddd;
+    label {
+      text-transform: uppercase;
+      font-size: 18px;
+      color: white;
+    }
+
+    input#id_username:focus,
+    input#id_password:focus {
+      background-color: #ccc;
       outline: none;
+      position: relative;
+    }
+
+    input#id_username,
+    input#id_password {
+      background-color: white;
+      outline: none;
+      height: 30px;
+      font-size: 18px;
+      margin: 15px 0px 20px 174px;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      width: 45%;
+      display: grid;
+      position: relative;
     }
 
     .form-edit {
-      padding: 10px;
+      padding: 0px 0px 40px 0px;
       margin: 0px 400px 0px 400px;
-      font-family: 'Comfortaa', cursive;
+      font-family: "Raleway", sans-serif;
+      color: white;
+      font-size: 24px;
+      text-align: center;
+      position: relative;
     }
 
-    a {
-      font-size: 12.5px;
-      font-family: 'Comfortaa', cursive;
+    .signup-text {
+      font-size: 16px;
+      font-family: "Raleway", sans-serif;
+      color: white;
+      margin-top: 20px;
     }
-    
+
+    .signup-text:hover {
+      color: #0b1c22;
+    }
+
+    .redirect {
+      text-align: center;
+      position: absolute;
+      bottom: 5%;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 14px;
+    }
+
+    .link {
+      text-decoration: none;
+      cursor: pointer;
+      font-weight: bolder;
+      color: var(--blue-color);
+    }
+
+    .glow {
+      font-size: 14px;
+      color: #fff;
+      text-align: center;
+      animation: glow 1s ease-in-out infinite alternate;
+    }
+
+    @keyframes glow {
+      from {
+        text-shadow: 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #b1dcc0,
+          0 0 60px #b1dcc0, 0 0 70px #b1dcc0, 0 0 80px #b1dcc0, 0 0 90px #b1dcc0;
+      }
+
+      to {
+        text-shadow: 0 0 40px #fff, 0 0 50px #04aa6d, 0 0 60px #04aa6d,
+          0 0 70px #04aa6d, 0 0 80px #04aa6d, 0 0 900px #04aa6d, 0 0 100px #04aa6d;
+      }
+    }
   </style>
 
   <div class="bg-img">
-      <h3>Login</h3>
-      <br /><br />
-      <form class="form-edit" method="post">
-          {% csrf_token %} {{ form.as_p }}
-        <br />
-        <p>
-          <button class="btn" type="submit">Login</button>
-          <br><br><a href="{% url 'signup' %}">Don't have an account ? Register</a>
-        </p>
-        <input type="hidden" name="next" value="{{next}}" />
-      </form>
-      {# If you have written a password_reset template, then add here #}
+    <br><br>
+    <h3>LOGIN</h3>
+    <br />
+    <form class="form-edit" method="post">
+      {% csrf_token %} {{ form.as_p }}
+      <br />
+      <p>
+        <button class="btn" style="font-size: 16px" type="submit">Login</button>
+      <div class="redirect; signup-text">
+        Don't have an account?&nbsp;<a href="{% url 'signup' %}" class="glow" style="font-size: 16px;">Register</a>
+        <br /><br />
+      </div>
+      </p>
+      <input type="hidden" name="next" value="{{next}}" />
+    </form>
+    {# If you have written a password_reset template, then add here #}
 </body>
 </div>
 

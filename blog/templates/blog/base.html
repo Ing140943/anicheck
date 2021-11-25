@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
+  
 {% load static %}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
 <link
-    href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Codystar&family=Comfortaa&family=Cutive+Mono&family=Dokdo&family=Finger+Paint&family=Indie+Flower&family=Lexend+Mega&family=Londrina+Outline&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&family=Short+Stack&family=Yomogi&display=swap"
-    rel="stylesheet">
+  href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Codystar&family=Comfortaa&family=Cutive+Mono&family=Dokdo&family=Finger+Paint&family=Indie+Flower&family=Lexend+Mega&family=Londrina+Outline&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&family=Short+Stack&family=Yomogi&display=swap"
+  rel="stylesheet" />
 
 <body>
   <div class="navbar">
@@ -15,40 +16,68 @@
 
     {% if user.is_authenticated %}
     <div class="subnav">
-      <button class="subnavbtn">
-        User <i class="fa fa-caret-down"></i>
-      </button>
+      <button class="subnavbtn">User <i class="fa fa-caret-down"></i></button>
       <div class="subnav-content">
         <a href="{% url 'blog:profile' pk=user.pk %}">Profile</a>
-        <a href="http://127.0.0.1:8000/profile/edit/"> Edit Profile</a>
+        <a href="{% url 'blog:profile-edit' %}"> Edit Profile</a>
         <a href="http://127.0.0.1:8000/create-review/"> Create Reviews</a>
       </div>
     </div>
-    <a href="{% url 'blog:index' %}"><i class="fa fa-fw fa-lock"></i> Logout</a>
+    <a href="{% url 'blog:index' %}"><i class="fa fa-fw fa-unlock"></i> Logout</a>
     {% endif %}
 
     <div class="search-container">
       <form action="/action_page.php">
-        <button type="submit" style="float: right;"><i class="fa fa-search"></i></button>
+        <button type="submit" style="float: right">
+          <i class="fa fa-search"></i>
+        </button>
       </form>
     </div>
     <div class="search-animation">
-      <input type="text" placeholder="Find your fav anime here.." name="search">
+      <input type="text" placeholder="Find your fav anime here.." name="search" />
     </div>
 
-    <a href="{% url 'login' %}"><i class="fa fa-fw fa-unlock"></i> Login</a>
-
+    <a href="{% url 'login' %}"><i class="fa fa-fw fa-lock"></i> Login</a>
   </div>
 
   <style>
-
     a {
-      font-family: 'Comfortaa', cursive;
+      font-family: "Raleway", sans-serif;
+    }
+
+    .video-background {
+      position: relative;
+      overflow: hidden;
+      width: 100vw;
+      height: 100vh;
+    }
+
+    .video-background iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 100vw;
+      height: 100vh;
+      transform: translate(-50%, -50%);
+    }
+
+    @media (min-aspect-ratio: 16/9) {
+      .video-background iframe {
+        /* height = 100 * (9 / 16) = 56.25 */
+        height: 56.25vw;
+      }
+    }
+
+    @media (max-aspect-ratio: 16/9) {
+      .video-background iframe {
+        /* width = 100 / (9 / 16) = 177.777777 */
+        width: 177.777777vh;
+      }
     }
 
     .navbar {
       overflow: hidden;
-      background-color: #333;
+      background-color: #0b1c22;
     }
 
     .navbar a {
@@ -78,17 +107,18 @@
 
     .navbar a:hover,
     .subnav:hover .subnavbtn {
-      background-color: red;
+      background-color: #393e46;
+      color: white;
     }
 
     .subnav-content {
-      font-family: 'Comfortaa', cursive;
       display: none;
       position: absolute;
       left: 0;
-      background-color: red;
+      background-color: #393e46;
       width: 100%;
       z-index: 1;
+      color: white;
     }
 
     .subnav-content a {
@@ -98,7 +128,7 @@
     }
 
     .subnav-content a:hover {
-      background-color: #eee;
+      background-color: #b1dcc0;
       color: black;
     }
 
@@ -113,7 +143,7 @@
       margin-top: 8px;
       margin-right: 16px;
       font-size: 17px;
-      font-family: 'Comfortaa', cursive;
+      font-family: "Raleway", sans-serif;
     }
 
     @media screen and (max-width: 600px) {
@@ -127,16 +157,16 @@
         width: 100%;
         margin: 0;
         padding: 14px;
-        font-family: 'Comfortaa', cursive;
+        font-family: "Raleway", sans-serif;
       }
 
       .navbar .search-animation input[type="text"] {
         border: 1px solid #ccc;
-        font-family: 'Comfortaa', cursive;
+        font-family: "Raleway", sans-serif;
       }
     }
 
-    input[type=text] {
+    input[type="text"] {
       width: 130px;
       -webkit-transition: width 0.4s ease-in-out;
       transition: width 0.4s ease-in-out;
@@ -144,11 +174,11 @@
 
     .navbar .search-container {
       float: right;
-      font-family: 'Comfortaa', cursive;
+      font-family: "Raleway", sans-serif;
     }
 
     .navbar .search-container button:hover {
-      background: #ccc;
+      background: #04aa6d;
     }
 
     .navbar .search-container button {
@@ -166,11 +196,9 @@
       float: right;
     }
 
-
-    .navbar .search-animation input[type=text]:focus {
+    .navbar .search-animation input[type="text"]:focus {
       width: 50%;
     }
-    
   </style>
   {% load static %}
   <link rel="stylesheet" href="{% static 'blog/transit_image.css' %}" />

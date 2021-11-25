@@ -11,44 +11,72 @@
     h3 {
       text-align: center;
       margin-top: 100px;
-      font-family: 'Comfortaa', cursive;
+      font-family: "Raleway", sans-serif;
     }
 
     h1 {
-      margin-top: 60px;
+      margin-top: 30px;
       margin-bottom: 20px;
-      font-family: 'Comfortaa', cursive;
-      font-weight: 700;
+      font-family: "Raleway", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
     }
 
     h2,
     p {
       margin-bottom: 10px;
       text-align: center;
-      font-family: 'Comfortaa', cursive;
+      font-family: "Raleway", sans-serif;
     }
 
     h2 {
-      color: pink;
+      color: #656565;
     }
 
     p {
-      color: powderblue;
+      color: #808782;
     }
 
     .text-hover:hover {
-      color: red;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-color: #04AA6D;
+      color: white;
+    }
+
+    .container {
+      border: 2px solid #dedede;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 30px;
+    }
+
+    .container::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    h1:hover,
+    h2:hover {
+      color: white;
+    }
+
+    .container:hover{
+      background-image: url("https://images5.alphacoders.com/909/thumb-1920-909769.png");
+      color: white;
     }
   </style>
+
   {% if reviews %} {% for review in reviews %}
-  <div>
+  <div class="container">
     <marquee direction="right">
       <h1>Title: {{ review.title }}</h1>
     </marquee>
     <h2>Author: {{ review.author.username }}</h2>
     <p class="text-hover">Body: {{ review.body|safe }}</p>
   </div>
-  <hr />
   {% endfor %} {% if is_paginated %}
   <!-- Pagination -->
   <ul>
