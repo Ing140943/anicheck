@@ -1,6 +1,8 @@
 {% extends "blog/base.html" %}
 {% block content %}
     <br></br>
+    <img src= {{ image }} height="200px" width="200px">
+    <div>Title : {{ title }}</div>
     <div>Sub Type: {{ sub_type }}</div>
     <div>Status: {{ status }}</div>
     <div>Popularity: {{ popularity }}</div>
@@ -9,4 +11,7 @@
     <div>Age Rating: {{ age_rating }}</div>
     <div>Popularity: {{ popularity }}</div>
     <div>Rating: {{ rating }}</div>
+    {% if user.is_authenticated %}
+        <button><a href="{% url 'blog:add-mylist' title=title pk=user.pk %}"><div><h1>ADD</h1></div></a></button>
+    {% endif %}
 {% endblock %}

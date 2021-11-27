@@ -21,6 +21,22 @@ create our favorite anime list, write some reviews on that anime.
 
 * [Interation 3 Plan](https://github.com/Ing140943/anicheck/wiki/Iteration-3-Plan) and [TaskBoard](https://github.com/Ing140943/anicheck/projects/6)
 
+## Iterations 4
+
+* [Interation 4 Plan](https://github.com/Ing140943/anicheck/wiki/Iteration-4-Plan) and [TaskBoard](https://github.com/Ing140943/anicheck/projects/7)
+
+## Iterations 5
+
+* [Interation 5 Plan](https://github.com/Ing140943/anicheck/wiki/Iteration-5-Plan) and [TaskBoard](https://github.com/Ing140943/anicheck/projects/8)
+
+## Iterations 6
+
+* [Interation 6 Plan](https://github.com/Ing140943/anicheck/wiki/Iteration-6-Plan) and [TaskBoard](https://github.com/Ing140943/anicheck/projects/9)
+
+### Getting start "Anicheck"     
+* [Instruction for Installation Application](https://github.com/Ing140943/anicheck/wiki/Instruction-for-Installation-Application)
+
+
 ### Team
 
 * [Bannakorn Sinlapaorankul](https://github.com/borrabeam) 

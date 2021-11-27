@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 4.1.2 (Python 3.9.7 on darwin)" generated="20211121 22:16:50.397" rpa="false" schemaversion="2">
+<suite id="s1" name="Bannakorn" source="/Users/borrabeam/Documents/ISP/anicheck/selenium/bannakorn.robot">
+<test id="s1-t1" name="1. เปิดเว็บไซต์ google">
+<kw name="Open Browser" library="SeleniumLibrary">
+<arg>${url}</arg>
+<arg>${Browser}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<msg timestamp="20211121 22:16:50.580" level="INFO">Opening browser 'chrome' to base url 'https://anicheck-isp.herokuapp.com/'.</msg>
+<kw name="Capture Page Screenshot" library="SeleniumLibrary">
+<doc>Takes a screenshot of the current page and embeds it into a log file.</doc>
+<msg timestamp="20211121 22:16:50.586" level="INFO">Cannot capture screenshot because no browser is open.</msg>
+<status status="PASS" starttime="20211121 22:16:50.585" endtime="20211121 22:16:50.586"/>
+</kw>
+<msg timestamp="20211121 22:16:50.589" level="FAIL">WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+</msg>
+<status status="FAIL" starttime="20211121 22:16:50.580" endtime="20211121 22:16:50.589"/>
+</kw>
+<kw name="Maximize Browser Window" library="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="NOT RUN" starttime="20211121 22:16:50.590" endtime="20211121 22:16:50.590"/>
+</kw>
+<kw name="Set Selenium Speed" library="SeleniumLibrary">
+<arg>0.3</arg>
+<doc>Sets the delay that is waited after each Selenium command.</doc>
+<status status="NOT RUN" starttime="20211121 22:16:50.590" endtime="20211121 22:16:50.590"/>
+</kw>
+<status status="FAIL" starttime="20211121 22:16:50.578" endtime="20211121 22:16:50.590">WebDriverException: Message: 'chromedriver' executable needs to be in PATH. Please see https://chromedriver.chromium.org/home
+</status>
+</test>
+<status status="FAIL" starttime="20211121 22:16:50.401" endtime="20211121 22:16:50.591"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="0" fail="1" skip="0" id="s1" name="Bannakorn">Bannakorn</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>

@@ -1,0 +1,19 @@
+{% extends "blog/base.html" %}
+{% block content %}
+<h2>MyList</h2>
+
+    {% if object_list %}
+        <table>
+            {% for title in object_list %}
+                <tr>
+                    <td><a href="{% url 'blog:kitsu' title=title %}"><h1>{{ title }}</h1></a></td>
+                    <td><button><a href="{% url 'blog:remove-mylist' title=title pk=user.pk %}"><h1>[remove]</h1></a></button></td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% else %}
+        <h1>No favorite add here yet, Find some and add it!!!</h1>
+    {% endif %}
+    
+{% endblock %}
+
