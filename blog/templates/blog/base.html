@@ -21,7 +21,8 @@
       <div class="subnav-content">
         <a href="{% url 'blog:profile' pk=user.pk %}">Profile</a>
         <a href="{% url 'blog:profile-edit' %}"> Edit Profile</a>
-        <a href="http://127.0.0.1:8000/create-review/"> Create Reviews</a>
+        <a href="{% url 'blog:create-review' %}"> Create Reviews</a>
+        <a href="{% url 'blog:mylist' pk=user.pk %}">MyList</a>
       </div>
     </div>
 

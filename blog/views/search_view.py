@@ -19,7 +19,6 @@ async def kitsu(request, title):
         return HttpResponse("กรอกด้วยไอสัส")
     loop = asyncio.get_event_loop()
     loop.create_task(blog.models.models_search.anime_search(title))
-    # print(blog.models.api_uses(title))
     data = loop.run_until_complete(asyncio.gather(blog.models.models_search.anime_search(title)))[0]
     return render(request, 'blog/show_detail.html', context={
         "url": title,
@@ -39,9 +38,7 @@ async def kitsu_search(request):
     keyword = request.GET['keyword']
     loop = asyncio.get_event_loop()
     loop.create_task(blog.models.models_search.anime_search_title(keyword))
-    # print(blog.models.api_uses(title))
     data = loop.run_until_complete(asyncio.gather(blog.models.models_search.anime_search_title(keyword)))[0]
-    print(data)
     return render(request, 'blog/search.html', context={'title_list': data})
 
 
