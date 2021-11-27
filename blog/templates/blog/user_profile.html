@@ -1,9 +1,112 @@
-{% extends "blog/base.html" %}
+{% extends "blog/base.html" %} {% block content %}
+<style>
+  .edit {
+    margin-top: 30px;
+    margin-right: 50px;
+    text-align: right;
+    font-family: "Raleway", sans-serif;
+    color: white;
+  }
 
-{% block content %}
-    <button><a href="{% url 'blog:profile-edit' %}">Edit</a></button>
-    <h1>User: {{ user.username }} [{{ user.first_name }} {{ user.last_name }}]</h1>
-    {% for review in object_list %}
-        <h2>Title: {{ review.title }}</h2>
-    {% endfor %}
-{% endblock %}
+  button {
+    padding: 8px 6px;
+    font-family: "Raleway", sans-serif;
+  }
+
+  button:hover {
+    background-color: #04aa6d;
+    color: white;
+    font-family: "Raleway", sans-serif;
+  }
+
+  a {
+    color: black;
+    font-family: "Raleway", sans-serif;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+  h3 {
+    text-align: right;
+    margin-top: 20px;
+    margin-right: 50px;
+    font-family: "Raleway", sans-serif;
+    font-size: 16px;
+    color: white;
+  }
+
+  h2 {
+    font-family: "Raleway", sans-serif;
+    margin-left: 200px;
+    margin-right: 200px;
+    color: black;
+    padding: 10px 20px 10px 20px;
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  }
+
+  h1 {
+    text-align: center;
+    margin: 20px 0px 40px 0px;
+    padding: 15px 0px 15px 0px;
+    color: white;
+    font-size: 40px;
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    text-align: left;
+    padding: 8px;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #f2f2f2;
+    opacity: 0.6;
+  }
+
+  body {
+    background-image: url("https://images5.alphacoders.com/909/thumb-1920-909769.png");
+  }
+
+  .glow {
+    color: #fff;
+    text-align: center;
+    animation: glow 1s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      text-shadow: 0 0 0px #fff, 0 0 5px #fff, 0 0 10px #b1dcc0,
+        0 0 15px #b1dcc0, 0 0 20px #b1dcc0, 0 0 25px #b1dcc0, 0 0 30px #b1dcc0;
+    }
+
+    to {
+      text-shadow: 0 0 10px #fff, 0 0 15px #04aa6d, 0 0 20px #04aa6d,
+        0 0 25px #04aa6d, 0 0 30px #04aa6d, 0 0 35px #04aa6d, 0 0 40px #04aa6d;
+    }
+  }
+</style>
+
+<div class="edit">
+  <button><a href="{% url 'blog:profile-edit' %}">Edit</a></button>
+</div>
+<h3>User: {{ user.username }} [{{ user.first_name }} {{ user.last_name }}]</h3>
+<br /><br /><br />
+<h1 class="glow">{{ user.username }}'s LIST</h1>
+<table>
+  {% for review in object_list %}
+  <tr>
+    <th>
+      <h2>Title: {{ review.title }}</h2>
+    </th>
+  </tr>
+  {% endfor %} {% endblock %}
+</table>

@@ -1,34 +1,101 @@
-{% extends "blog/base.html" %}
-{% block content %}
-    {% if reviews %}
-        {% for review in reviews %}
-            <div>
-                <h1>Title: {{ review.title }}</h1>
-                <h2>Author: {{ review.author.username }}</h2>
-                <p>Body: {{ review.body|safe }}</p>
-            </div>
-            <hr>
-        {% endfor %}
 
-        {% if is_paginated %}
-        <ul>
-            {% if page_obj.has_previous %}
-            <li>
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Newer</a>
-            </li>
-            {% endif %}
+{% extends "blog/base.html" %} {% block content %}
+<html>
 
-            {% if page_obj.has_next %}
-            <li>
-                <a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a>
-            </li>
-            {% endif %}
-        </ul>
-        {% endif %}
-    {% else %}
-        <h1>No reviews yet!!!</h1>
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Codystar&family=Comfortaa&family=Cutive+Mono&family=Dokdo&family=Finger+Paint&family=Indie+Flower&family=Lexend+Mega&family=Londrina+Outline&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&family=Short+Stack&family=Yomogi&display=swap"
+    rel="stylesheet">
+  <style>
+    h3 {
+      text-align: center;
+      margin-top: 100px;
+      font-family: "Raleway", sans-serif;
+    }
+
+    h1 {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      font-family: "Raleway", sans-serif;
+      font-weight: 600;
+      font-size: 28px;
+    }
+
+    h2,
+    p {
+      margin-bottom: 10px;
+      text-align: center;
+      font-family: "Raleway", sans-serif;
+    }
+
+    h2 {
+      color: #656565;
+    }
+
+    p {
+      color: #808782;
+    }
+
+
+    .text-hover:hover {
+      padding-top: 20px;
+      padding-bottom: 20px;
+      background-color: #04AA6D;
+      color: white;
+    }
+
+    .container {
+      border: 2px solid #dedede;
+      background-color: #f1f1f1;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 30px;
+    }
+
+    .container::after {
+      content: "";
+      clear: both;
+      display: table;
+    }
+
+    h1:hover,
+    h2:hover {
+      color: white;
+    }
+
+    .container:hover{
+      background-image: url("https://images5.alphacoders.com/909/thumb-1920-909769.png");
+      color: white;
+    }
+  </style>
+
+  {% if reviews %} {% for review in reviews %}
+  <div class="container">
+    <marquee direction="right">
+      <h1>Title: {{ review.title }}</h1>
+    </marquee>
+    <h2>Author: {{ review.author.username }}</h2>
+    <p class="text-hover">Body: {{ review.body|safe }}</p>
+  </div>
+  {% endfor %} {% if is_paginated %}
+  <!-- Pagination -->
+  <ul>
+    {% if page_obj.has_previous %}
+    <li>
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Newer</a>
+    </li>
+    {% endif %} {% if page_obj.has_next %}
+    <li>
+      <a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a>
+    </li>
     {% endif %}
-
-{% endblock %}
-
-
+  </ul>
+  {% endif %} {% else %}
+  <marquee direction="right">
+    <h3>NO REVIEW YET</h3>
+  </marquee>
+  {% endif %} {% endblock %}
+</head>
+</head>

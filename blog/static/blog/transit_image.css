@@ -1,94 +1,94 @@
-html {
-    scroll-behavior: smooth;
-  }
-  body {
-    margin: 0;
-    background-image: linear-gradient(
-      to top,
-      #ffbf86,
-      #ffc38d,
-      #ffc693,
-      #feca9a,
-      #fecda1,
-      #f8d1a4,
-      #f3d5a9,
-      #eed9ae,
-      #e3ddb4,
-      #d9e1bd,
-      #d2e3c7,
-      #cee5d0
-    );
-  }
-  h1 {
-    font-family: "Cabin Sketch";
-    color: white;
-    text-shadow: 1px 1px 0 #90AACB, -1px 1px 0 #90AACB, 1px -1px 0 #90AACB,
-      -1px -1px 0 #90AACB, 0px 1px 0 #90AACB, 0px -1px 0 #90AACB,
-      -1px 0px 0 #90AACB, 1px 0px 0 #90AACB, 2px 2px 0 #90AACB, -2px 2px 0 #90AACB,
-      2px -2px 0 #90AACB, -2px -2px 0 #90AACB, 0px 2px 0 #90AACB,
-      0px -2px 0 #90AACB, -2px 0px 0 #90AACB, 2px 0px 0 #90AACB, 1px 2px 0 #90AACB,
-      -1px 2px 0 #90AACB, 1px -2px 0 #90AACB, -1px -2px 0 #90AACB,
-      2px 1px 0 #90AACB, -2px 1px 0 #90AACB, 2px -1px 0 #90AACB,
-      -2px -1px 0 #90AACB;
-    text-align: center;
-    font-size: 70px;
-    margin-top: 10px;
-    margin-bottom: 0px;
-  }
-  .wrapper {
-    display: grid;
-    grid-template-columns: repeat(3, 100%);
-    overflow: hidden;
-    scroll-behavior: smooth;
-    margin-top: 0px;
-  }
-  .wrapper section {
-    width: 100%;
-    position: relative;
-    display: grid;
-    grid-template-columns: repeat(5, auto);
-    margin: 20px 0;
-  }
-  .wrapper section .item {
-    padding: 0 2px;
-    transition: 200ms all;
-  }
-  .wrapper section .item:hover {
-    margin: 0 40px;
-    transform: scale(1.2);
-  }
-  .wrapper section a {
-    position: absolute;
-    color: #fff;
-    text-decoration: none;
-    font-size: 6em;
-    background: black;
-    width: 80px;
-    padding: 20px;
-    text-align: center;
-    z-index: 1;
-  }
-  .wrapper section a:nth-of-type(1) {
-    top: 0;
-    bottom: 0;
-    left: 0;
-    background: linear-gradient(-90deg, rgba(0, 0, 0, 0) 0%, white 500%);
-  }
-  .wrapper section a:nth-of-type(2) {
-    top: 0;
-    bottom: 0;
-    right: 0;
-    background: linear-gradient(90deg, rgba(0, 0, 0, 0) 0%, white 500%);
-  }
-  @media only screen and (max-width: 600px) {
-    a.arrow__btn {
-      display: none;
-    }
-  }
-  
-  img {
-    width: 341px;
-    aspect-ratio: auto 341 / 192;
-    height: 192px;
-  }
-  
+* {
+  padding: 0;
+  margin: 0;
+  font-family: sans-serif;
+}
+.container {
+  position: relative;
+  height: 100%;
+}
+.slide-1 {
+  background: url("https://images6.alphacoders.com/661/thumb-1920-661661.jpg");
+}
+.slide-2 {
+  background: url("https://images2.alphacoders.com/715/thumb-1920-715482.jpg");
+}
+.slide-3 {
+  background: url("https://images7.alphacoders.com/611/thumb-1920-611138.png");
+}
+.slide-4 {
+  background: url("https://images4.alphacoders.com/231/thumb-1920-231268.jpg");
+}
+.slide-5 {
+  background: url("https://images7.alphacoders.com/703/thumb-1920-703704.jpg");
+}
+.slide-6 {
+  background: url("https://images5.alphacoders.com/621/thumb-1920-621480.jpg");
+}
+.slide-7 {
+  background: url("https://images2.alphacoders.com/991/thumb-1920-991889.jpg");
+}
+.slide-8 {
+  background: url("https://img.olhardigital.com.br/wp-content/uploads/2021/09/one-piece-scaled.jpg");
+}
+
+
+
+.slide {
+  width: 100%;
+  height: 100vh;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow-x: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+}
+.caption {
+  background: rgba(0, 0, 0, 0.03);
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 40px 0px;
+}
+.caption h3 {
+  color: #fff;
+  font-size: 50px;
+  padding: 18px;
+  text-align: center;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+.caption p {
+  max-width: 600px;
+  width: 90%;
+  margin: 0px auto;
+  color: #ccc;
+  text-align: center;
+  font-size: 18px;
+  line-height: 1.5em;
+}
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  transform: background 500ms;
+}
+.arrow img {
+  width: 60px;
+}
+.arrow:hover {
+  background: rgba(0, 0, 0, 0.4);
+}
+.l {
+  left: 0;
+}
+.r {
+  right: 0;
+}
