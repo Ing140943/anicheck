@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-  
+
 {% load static %}
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
@@ -23,21 +23,24 @@
         <a href="http://127.0.0.1:8000/create-review/"> Create Reviews</a>
       </div>
     </div>
-    <a href="{% url 'blog:index' %}"><i class="fa fa-fw fa-unlock"></i> Logout</a>
-    {% endif %}
 
+    {% endif %}
+    <div>
+      {% if user.is_authenticated %}
+      <a href="{% url 'logout' %}"><i class="fa fa-fw fa-unlock"></i> Logout</a>
+      {% else %}
+      <a href="{% url 'login' %}"><i class="fa fa-fw fa-lock"></i> Login</a>
+      {% endif %}
+    </div>
+    
     <div class="search-container">
-      <form action="/action_page.php">
-        <button type="submit" style="float: right">
+      <form action="{% url 'blog:search' %}" method="get">
+        <button class="active" type="submit" style="float: right" value="Search">
           <i class="fa fa-search"></i>
         </button>
+          <input type="text" placeholder="Find your fav anime here.." name="keyword">
       </form>
     </div>
-    <div class="search-animation">
-      <input type="text" placeholder="Find your fav anime here.." name="search" />
-    </div>
-
-    <a href="{% url 'login' %}"><i class="fa fa-fw fa-lock"></i> Login</a>
   </div>
 
   <style>
