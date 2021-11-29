@@ -1,4 +1,8 @@
-{% block content %}
+{% extends "blog/base.html" %} {% block content %}
+
+<head>
+  <title>Edit Profile</title>
+</head>
 
 <style>
   .edit {
@@ -7,36 +11,28 @@
     font-family: "Raleway", sans-serif;
     color: white;
   }
-
-  button {
-    padding: 8px 6px;
-    font-family: "Raleway", sans-serif;
-  }
-
-  button:hover {
-    background-color: #04aa6d;
-    color: white;
-    font-family: "Raleway", sans-serif;
-  }
-
+  
   body {
-    background-image: url("https://images5.alphacoders.com/909/thumb-1920-909769.png");
+    background-image: url("https://images3.alphacoders.com/112/thumb-1920-1123679.jpg");
   }
 
   label {
-    font-size: 18px;
+    font-size: 20px;
+    text-align: center;
     color: white;
-    text-transform: uppercase;
+    font-weight: bold;
+    text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+    margin-left: 120px;
   }
 
   .edit {
-    margin-top: 30px;
-    padding-left: 20px;
-    text-align: center;
+    text-align: left;
+    margin-left: 330px;
   }
 
   .edit-profile-form {
-    text-align: center;
+    text-align: left;
+    margin-left: 120px;
   }
 
   a {
@@ -44,26 +40,40 @@
   }
 
   a:hover {
-    color: white;
+    color:white;
   }
 
-  button:hover {
-    background-color: #04aa6d;
+  .edit button {
+    background-color: white;
+    border-radius: 10px;
+    padding: 12px;
   }
 
-  h1 {
+  .edit button:hover {
+    background-color: #F4775B;
+  }
+
+  .board h1 {
     color: white;
     text-align: center;
-    margin: 90px 0px 30px 0px;
-    text-shadow: 2px 2px 5px #b1dcc0;
-    font-size: 36px;
+  }
+
+  .board {
+    font-size: 42px;
+    text-shadow: -1.5px 0 black, 0 1.5px black, 1.5px 0 black, 0 -1.5px black;
+    margin-left: 180px;
+    color: white;
+    margin-top: 200px;
   }
 
   input#id_first_name,
   input#id_last_name {
-    font-size: 16px;
-    margin: 10px 0px 10px 0px;
+    font-size: 14px;
+    margin: 10px 0px 10px 10px;
     width: 10%;
+    color: #393e46;
+    border-radius: 10px;
+    padding: 5px;
   }
 
   input#id_first_name {
@@ -78,19 +88,26 @@
   input#id_last_name:focus {
     font-size: 16px;
     margin: 10px 0px 10px 0px;
-    width: 25%;
+    width: 15%;
   }
+
 </style>
 
-<h1>{{ user.username }}'s PROFILE EDIT</h1>
-<form enctype="multipart/form-data" method="POST">
-  <br /><br />
-  <div class="edit-profile-form">
-    {% csrf_token %} {{ profile_form.as_p }}
-    <br />
-  </div>
-  <div class="edit">
-    <button><a href="{% url 'blog:profile' pk=user.pk %}">Submit</a></button>
-  </div>
-</form>
-{% endblock %}
+<div class="container">
+  <h1 class="board">{{ user.username }}'s Profile Edit</h1>
+</div>
+  <form enctype="multipart/form-data" method="POST">
+    <br /><br />
+    
+      <div class="edit-profile-form">
+        {% csrf_token %} {{ profile_form.as_p }}
+        <br />
+      </div>
+
+    <div class="edit">
+      <button><a href="{% url 'blog:profile' pk=user.pk %}">Submit</a></button>
+    </div>
+  </form>
+</div>
+  {% endblock %}
+

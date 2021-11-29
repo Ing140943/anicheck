@@ -1,17 +1,153 @@
 {% extends "blog/base.html" %}
 {% block content %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Details</title>
+    <style>
+
+        body {
+            background: hsla(61, 81%, 88%, 1);
+            background: linear-gradient(270deg, hsla(61, 81%, 88%, 0.5) 9%, hsla(141, 15%, 18%, 0.5) 100%, hsla(0, 0%, 0%, 0.6) 100%, hsla(60, 4%, 34%, 1) 100%);
+            background: -moz-linear-gradient(270deg, hsla(61, 81%, 88%, 0.5) 9%, hsla(141, 15%, 18%, 0.5) 100%, hsla(0, 0%, 0%, 0.6) 100%, hsla(60, 4%, 34%, 1) 100%);
+            background: -webkit-linear-gradient(270deg, hsla(61, 81%, 88%, 0.5) 9%, hsla(141, 15%, 18%, 0.5) 100%, hsla(0, 0%, 0%, 0.6) 100%, hsla(60, 4%, 34%, 1) 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F8F9C7", endColorstr="#27352C", GradientType=1 );
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+            margin-top: 20px;
+            border:2px solid #f2f2f2;
+            -moz-box-shadow: 10px 10px 5px #2c2f30;
+            -webkit-box-shadow: 10px 10px 5px #2c2f30;
+            box-shadow: 10px 10px 5px #2c2f30;
+            -moz-border-radius:25px;
+            -webkit-border-radius:25px;
+            border-radius:25px;
+        }
+
+        .body {
+            font-family: "Raleway", sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .add-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 20px;
+        }
+
+        .add-btn button {
+            background-color: #0b1c22;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 10px;
+            margin-bottom: 50px;
+        }
+
+        .add-btn button:hover {
+            background-color: #04aa6d;
+            transform: translateY(0) scale(1);
+        }
+
+        .add-btn:hover {
+            color: white;
+        }
+
+        a {
+            color: white;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 80%;
+            border: 1px solid #0b1c22;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 50px;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 16px;
+        }
+
+        tr:nth-child(odd) {
+            background-color: #0b1c22;
+            color: #f2f2f2;
+        }
+
+        .title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .info {
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
     <br></br>
-    <img src= {{ image }} height="200px" width="200px">
-    <div>Title : {{ title }}</div>
-    <div>Sub Type: {{ sub_type }}</div>
-    <div>Status: {{ status }}</div>
-    <div>Popularity: {{ popularity }}</div>
-    <div>Synopsis: {{ synopsis }}</div>
-    <div>Number of episodes: {{ episode }}</div>
-    <div>Age Rating: {{ age_rating }}</div>
-    <div>Popularity: {{ popularity }}</div>
-    <div>Rating: {{ rating }}</div>
+    <img src={{ image }} height="600px" width="500px">
+    <table>
+        <tr>
+            <td>
+                <div class="title">
+                    <strong>Title :</strong> {{ title }}
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Sub Type :</strong> {{ sub_type }}</td>
+        </tr>
+        <tr>
+            <td><strong>Status :</strong> {{ status }}</td>
+        </tr>
+        <tr>
+            <td><strong>Popularity :</strong> {{ popularity }}</td>
+        </tr>
+        <tr>
+            <td><strong>Synopsis :</strong>
+                <div class="info"> {{ synopsis }}</div>
+            </td>
+        </tr>
+        <tr>
+            <td><strong>Number of episodes :</strong> {{ episode }}</td>
+        </tr>
+        <tr>
+            <td><strong>Age Rating :</strong> {{ age_rating }}</td>
+        </tr>
+        <tr>
+            <td><strong>Rating:</strong> {{ rating }}</td>
+        </tr>
+    </table>
+
     {% if user.is_authenticated %}
-        <button><a href="{% url 'blog:add-mylist' title=title pk=user.pk %}"><div><h1>ADD</h1></div></a></button>
+        <div class="add-btn">
+            <button><a href="{% url 'blog:add-mylist' title=title pk=user.pk %}">Add</a></button>
+        </div>
     {% endif %}
+
+</body>
+
+
+
 {% endblock %}

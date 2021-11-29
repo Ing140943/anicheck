@@ -1,11 +1,121 @@
 {% extends "blog/base.html" %}
 {% block content %}
 
-    {% if title_list %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Anime List</title>
+    <style>
+
+        body {
+            background: hsla(141, 81%, 87%, 1);
+            background: linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
+            background: -moz-linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
+            background: -webkit-linear-gradient(90deg, hsla(141, 81%, 87%, 1) 0%, hsla(41, 88%, 75%, 1) 50%, hsla(358, 82%, 71%, 1) 100%);
+            filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#C5F9D7", endColorstr="#F7D486", GradientType=1 );
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .zoom {
+            transition: transform .2s;
+            width: 100px;
+            height: 50px;
+            margin-right: auto;
+            margin-left: 100px;
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+
+        .zoom:hover {
+            -ms-transform: scale(1.5);
+            /* IE 9 */
+            -webkit-transform: scale(1.5);
+            /* Safari 3-8 */
+            transform: scale(1.5);
+        }
+
+        h1 {
+            font-size: 20px;
+            clear: both;
+            display: inline-block;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
+            color: #0b1c22;
+        }
+        
+        h1:hover {
+            color: #FA1E0E;
+        }
+
+        table {
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+            border: 1px solid #0b1c22;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f25e;
+        }
+
+        .alert {
+            padding: 20px;
+            background-color: #FA1E0E;
+            color: white;
+            font-family: "Raleway", sans-serif;
+        }
+
+        .closebtn {
+            margin-left: 15px;
+            color: white;
+            font-weight: bold;
+            float: right;
+            font-size: 22px;
+            line-height: 20px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .closebtn:hover {
+            color: black;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        {% if title_list %}
         {% for title in title_list %}
-            <a href="{% url 'blog:kitsu' title=title %}"><div><h1>{{ title }}</h1></div></a>
+        <tr>
+            <td><a href="{% url 'blog:kitsu' title=title %}">
+                    <div class="zoom">
+                        <h1>{{ title }}</h1>
+                    </div>
+            </td>
+            </a>
+        </tr>
         {% endfor %}
-    {% else %}
-        <div><h1>No results found!!!</h1></div>
-    {% endif %}
+        {% else %}
+        <div class="alert">
+            <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+            <strong>Error !</strong> No anime matches your search, Please try again.
+        </div>
+        {% endif %}
+    </table>
+
+</body>
+
+</html>
 {% endblock %}

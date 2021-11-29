@@ -1,191 +1,229 @@
 {% extends "blog/base.html" %} {% block content %}
-<style>
-  body {
-    background-color: white !important;
-    font-family: 'Comfortaa', cursive;
-  }
 
-  p {
-    color: #508779;
-    font-family: 'Raleway', sans-serif;
-  }
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About Us</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: "Raleway", sans-serif;
+      }
 
-  h1, 
-  h2,
-  p,
-  h3 {
-    margin-left: 20px;
-    margin-right: 20px;
-  }
+      .header {
+        margin-top: 80px;
+        margin-bottom: 70px;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 52px;
+        background: linear-gradient(360deg, #fde19f, #e25559);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        -moz-text-fill-color: transparent;
+        -webkit-text-fill-color: transparent;
+      }
 
-  h1,
-  h2,
-  h3 {
-    color: #0b1c22;
-    font-family: 'Raleway', sans-serif;
-  }
+      h3 {
+        font-size: 20px;
+        font-weight: normal;
+        color: #64364d;
+      }
 
-  h3 {
-    border-bottom: 1.5px solid grey;
-    font-size: 20px;
-    font-family: 'Raleway', sans-serif;
-  }
+      html {
+        box-sizing: border-box;
+      }
 
-  body {
-    margin: 0;
-    font-family: 'Raleway', sans-serif;
-  }
+      *,
+      *:before,
+      *:after {
+        box-sizing: inherit;
+      }
 
-  html {
-    box-sizing: border-box;
-  }
+      .column {
+        float: left;
+        width: 25%;
+        margin-bottom: 16px;
+        padding: 0 8px;
+      }
 
-  *,
-  *:before,
-  *:after {
-    box-sizing: inherit;
-  }
+      .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        margin: 8px;
+      }
 
-  .column {
-    float: left;
-    width: 25%;
-    margin-bottom: 16px;
-    padding: 0 8px;
-  }
+      .all-section {
+        padding: 120px 50px 120px 50px;
+        text-align: center;
+        background-image: url("https://images5.alphacoders.com/670/thumb-1920-670920.jpg");
+        background-size: 100%;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        color: white;
+      }
 
-  .card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    margin: 8px;
-  }
+      .container {
+        padding: 0 16px;
+        margin-bottom: 50px;
+      }
 
-  .about-section {
-    padding: 50px;
-    text-align: center;
-    background-color: #474e5d;
-    color: white;
-  }
+      .container::after,
+      .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
 
-  .container {
-    padding: 0 16px;
-  }
+      .title {
+        color: grey;
+      }
 
-  .container::after,
-  .row::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
+      @media screen and (max-width: 650px) {
+        .column {
+          width: 100%;
+          display: block;
+        }
+      }
 
-  .title {
-    color: grey;
-  }
+      img:hover {
+        animation: shake 0.5s;
+        animation-iteration-count: infinite;
+      }
 
-  @media screen and (max-width: 650px) {
-    .column {
-      width: 100%;
-      display: block;
-    }
-  }
+      @keyframes shake {
+        0% {
+          transform: translate(1px, 1px) rotate(0deg);
+        }
 
-  img:hover {
-    animation: shake 0.5s;
-    animation-iteration-count: infinite;
-  }
+        10% {
+          transform: translate(-1px, -2px) rotate(-1deg);
+        }
 
-  @keyframes shake {
-    0% {
-      transform: translate(1px, 1px) rotate(0deg);
-    }
+        20% {
+          transform: translate(-3px, 0px) rotate(1deg);
+        }
 
-    10% {
-      transform: translate(-1px, -2px) rotate(-1deg);
-    }
+        30% {
+          transform: translate(3px, 2px) rotate(0deg);
+        }
 
-    20% {
-      transform: translate(-3px, 0px) rotate(1deg);
-    }
+        40% {
+          transform: translate(1px, -1px) rotate(1deg);
+        }
 
-    30% {
-      transform: translate(3px, 2px) rotate(0deg);
-    }
+        50% {
+          transform: translate(-1px, 2px) rotate(-1deg);
+        }
 
-    40% {
-      transform: translate(1px, -1px) rotate(1deg);
-    }
+        60% {
+          transform: translate(-3px, 1px) rotate(0deg);
+        }
 
-    50% {
-      transform: translate(-1px, 2px) rotate(-1deg);
-    }
+        70% {
+          transform: translate(3px, 1px) rotate(-1deg);
+        }
 
-    60% {
-      transform: translate(-3px, 1px) rotate(0deg);
-    }
+        80% {
+          transform: translate(-1px, -1px) rotate(1deg);
+        }
 
-    70% {
-      transform: translate(3px, 1px) rotate(-1deg);
-    }
+        90% {
+          transform: translate(1px, 2px) rotate(0deg);
+        }
 
-    80% {
-      transform: translate(-1px, -1px) rotate(1deg);
-    }
+        100% {
+          transform: translate(1px, -2px) rotate(-1deg);
+        }
+      }
 
-    90% {
-      transform: translate(1px, 2px) rotate(0deg);
-    }
+      h1 {
+        font-size: 48px;
+      }
 
-    100% {
-      transform: translate(1px, -2px) rotate(-1deg);
-    }
-  }
-</style>
+      .vision-section,
+      .background-section {
+        text-align: center;
+        margin: 50px;
+      }
 
-<!-- Add icon library -->
-<link
-  rel="stylesheet"
-  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
-/>
+      .about-paragraph {
+        font-size: 20px;
+        margin: 50px 0px 10px 0px;
+      }
 
-<body>
-  <div class="container">
-    <br /><br><br>
-    <h1 style="font-size: 35px; border-bottom: 1.5px solid grey">
-      <b>About Us</b>
-    </h1>
-    <br>
-    <p>
-      Web application for people who are interested and love to watch Japanese
-      animation. The main purpose of our application is to support the copyright
-      of Japanese animation. We hope that our web application will give
-      encouragement to every animation maker.
-    </p>
-    <br /><br />
-    <h2 style="border-bottom: 1.5px solid grey"><b>Vision</b></h2>
-    <br>
-    <p>
-      For the people who want to find some copyright sources of the anime that
-      they are interested in, and want to create their favorite anime list. They
-      will know some detail about that anime such as the number of episodes,
-      some main characters, etc. They can also see some reviews of that anime by
-      the other users that will help them get more information about that anime.
-    </p>
-    <br /><br />
-    <h2 style="border-bottom: 1.5px solid grey"><b>Development Team</b></h2>
-    <br />
+      .title {
+        color: #e2555aad;
+      }
+
+      .uni-section {
+        color: #954857bb;
+        font-size: 14px;
+      }
+
+      .row {
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="all-section">
+      <h1 class="about-section">About Us</h1>
+      <p class="about-paragraph">
+        People who are interested in and enjoy watching Japanese anime can use
+        this web application. <br>The primary goal of our application is to protect
+        Japanese anime copyright. <br>We believe that our web application will
+        provide inspiration to all animators.
+      </p>
+      <br /><br />
+      <h2 class="vision-section">Vision</h2>
+      <br />
+      <p>
+        For people who wish to make a favorite anime list and want to find some
+        copyright sources for the anime they're interested in. <br />They will
+        be aware of some details of the anime, such as the amount of episodes,
+        the main characters, and so on. <br />
+        They can also read reviews of the anime written by other people, which
+        can help them learn more about it.
+      </p>
+      <br /><br />
+      <h2 class="background-section">Background</h2>
+      <br />
+      <p>
+        We now have a plethora of online options for watching Japanese
+        animation. <br />However, many consumers are unaware of which providers
+        have anime that they want to watch. <br />Also, stay away from piracy
+        apps and websites that cater to anime creators. <br />We can search from
+        any search engine using this project, although they frequently return
+        results that are connected <br />but not on the user's direct primary
+        point, and they occasionally return results from piracy applications or
+        websites. <br />The goal of this web application is to get consumers to
+        view anime using legal and copyright apps.
+      </p>
+    </div>
+
+    <h2 class="header" tyle="text-align: center">Development Team</h2>
     <div class="row">
       <div class="column">
         <div class="card">
           <img
             src="https://avatars.githubusercontent.com/u/58978730?v=4"
-            alt="Bannakorn"
+            alt="bannakorn"
             style="width: 100%"
           />
           <div class="container">
             <br />
             <h2>Bannakorn</h2>
             <h3>SINLAPAORANKUL</h3>
-            <br><p class="title">Backend Developer</p>
-            <p>Software Engineering, Kasetsart University</p>
-            <p>bannakorn.s@ku.th</p><br>
+            <br />
+            <p class="title">Backend Developer</p>
+            <div class="uni-section">
+              <p>Software Engineering, Kasetsart University</p>
+              <p>bannakorn.s@ku.th</p>
+            </div>
+            <br />
           </div>
         </div>
       </div>
@@ -201,9 +239,13 @@
             <br />
             <h2>Chonchanok</h2>
             <h3>CHEVAISRAKUL</h3>
-            <br><p class="title">Backend Developer</p>
-            <p>Software Engineering, Kasetsart University</p>
-            <p>chonchanok.che@ku.th</p><br>
+            <br />
+            <p class="title">Backend Developer</p>
+            <div class="uni-section">
+              <p>Software Engineering, Kasetsart University</p>
+              <p>chonchanok.che@ku.th</p>
+            </div>
+            <br />
           </div>
         </div>
       </div>
@@ -211,7 +253,7 @@
       <div class="column">
         <div class="card">
           <img
-            src="https://avatars.githubusercontent.com/u/78130311?s=400&u=69ad70e50318d341e796becdbfa38623e00f0514&v=4"
+            src="https://avatars.githubusercontent.com/u/78130311?s=400&u=1b973d460e73893851fec5c9b8de1ecde425f39c&v=4"
             alt="Phinyaphak"
             style="width: 100%"
           />
@@ -219,9 +261,13 @@
             <br />
             <h2>Phinyaphak</h2>
             <h3>CHIRADEJTHANANKORN</h3>
-            <br><p class="title">Frontend Developer</p>
-            <p>Software Engineering, Kasetsart University</p>
-            <p>phinyaphak.c@ku.th</p><br>
+            <br />
+            <p class="title">Frontend Developer</p>
+            <div class="uni-section">
+              <p>Software Engineering, Kasetsart University</p>
+              <p>phinyaphak.c@ku.th</p>
+            </div>
+            <br />
           </div>
         </div>
       </div>
@@ -237,14 +283,17 @@
             <br />
             <h2>Setthanat</h2>
             <h3>KLADEE</h3>
-            <br><p class="title">Backend Developer</p>
-            <p>Software Engineering, Kasetsart University</p>
-            <p>phinyaphak.c@ku.th</p><br>
+            <br />
+            <p class="title">Backend Developer</p>
+            <div class="uni-section">
+              <p>Software Engineering, Kasetsart University</p>
+              <p>setthanat.k@ku.th</p>
+            </div>
+            <br />
           </div>
         </div>
       </div>
     </div>
-
-    {% endblock%}
-  </div>
-</body>
+  </body>
+</html>
+{% endblock%}

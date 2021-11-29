@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Codystar&family=Comfortaa&family=Cutive+Mono&family=Dokdo&family=Finger+Paint&family=Indie+Flower&family=Lexend+Mega&family=Londrina+Outline&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&family=Short+Stack&family=Yomogi&display=swap"
       rel="stylesheet"
@@ -43,13 +44,13 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      color: white;
+      color: black;
     }
 
     :root {
-      --bl-color: white;
-      --blue-color: #04aa6d;
-      --lt-color: #ededed;
+      --bl-color: black;
+      --blue-color: #FF3544;
+      --lt-color: #FDF194;
       --text-fs: 16px;
       --title-fs: 34px;
     }
@@ -78,7 +79,8 @@
       width: 50%;
       min-width: 320px;
       padding: 10%;
-      background-image: url("https://images5.alphacoders.com/909/thumb-1920-909769.png");
+      background-image: url("https://images8.alphacoders.com/848/thumb-1920-848344.jpg");
+      background-size: cover;
     }
 
     .text-center {
@@ -138,6 +140,7 @@
       font-weight: bold;
       color: black;
       cursor: pointer;
+      background-color: #FDF194;
     }
 
     .icon {
@@ -148,6 +151,7 @@
     .social-btn:hover {
       border: solid 1px var(--blue-color);
       padding: 9px;
+      background-color: white;
     }
 
     .form-divider {
@@ -159,6 +163,7 @@
       width: 100%;
       border-radius: 10px;
       text-indent: 15%;
+      background-color: #FCFBBC;
     }
 
     .form-input:hover,
@@ -205,13 +210,8 @@
       left: 50%;
       transform: translateX(-50%);
       font-size: 16px;
-    }
-
-    .glow .link {
-      text-decoration: none;
-      cursor: pointer;
-      font-weight: bolder;
-      color: var(--blue-color);
+      color: white;
+      text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     }
 
     .card {
@@ -251,7 +251,7 @@
     }
 
     .error:hover {
-      background-color: #b1dcc0;
+      background-color: #FF3544;
     }
 
     @media screen and (max-width: 900px) {
@@ -266,24 +266,11 @@
       opacity: 0.8;
     }
 
-    .glow{
-      font-size: 14px;
-      color: #fff;
-      text-align: center;
-      animation: glow 1s ease-in-out infinite alternate;
+    .text-center {
+      color: black;
     }
+  
 
-    @keyframes glow {
-      from {
-        text-shadow: 0 0 30px #fff, 0 0 40px #fff, 0 0 50px #b1dcc0,
-          0 0 60px #b1dcc0, 0 0 70px #b1dcc0, 0 0 80px #b1dcc0, 0 0 90px #b1dcc0;
-      }
-
-      to {
-        text-shadow: 0 0 20px #fff, 0 0 30px #04aa6d, 0 0 40px #04aa6d,
-          0 0 50px #04aa6d, 0 0 60px #04aa6d, 0 0 70px #04aa6d, 0 0 80px #04aa6d;
-      }
-    }
   </style>
 
   <body>
@@ -362,7 +349,7 @@
     <div class="redirect">
       Already have an account?&nbsp;<a
         href="{% url 'login' %}"
-        class="glow" style="font-size: 16px;"
+        class="glow" style="font-size: 16px; color: #FDF194;"
         >Login</a
       >
       <br /><br />
