@@ -1,13 +1,19 @@
 {% extends "blog/base.html" %} {% block content %}
+<head>
+  <title>Profile</title>
+</head>
 <style>
   .edit {
-    margin-top: 30px;
+    margin-top: 50px;
     margin-right: 50px;
     text-align: right;
     font-family: "Raleway", sans-serif;
-    color: white;
+    color: black;
   }
 
+  .edit:hover:active {
+    color: white;
+  }
   button {
     padding: 8px 6px;
     font-family: "Raleway", sans-serif;
@@ -39,7 +45,7 @@
 
   h2 {
     font-family: "Raleway", sans-serif;
-    margin-left: 200px;
+    margin-left: 100px;
     margin-right: 200px;
     color: black;
     padding: 10px 20px 10px 20px;
@@ -73,7 +79,7 @@
   }
 
   body {
-    background-image: url("https://images5.alphacoders.com/909/thumb-1920-909769.png");
+    background-image: url("https://images6.alphacoders.com/112/thumb-1920-1123250.png");
   }
 
   .glow {
@@ -84,13 +90,13 @@
 
   @keyframes glow {
     from {
-      text-shadow: 0 0 0px #fff, 0 0 5px #fff, 0 0 10px #b1dcc0,
-        0 0 15px #b1dcc0, 0 0 20px #b1dcc0, 0 0 25px #b1dcc0, 0 0 30px #b1dcc0;
+      text-shadow: 0 0 0px #fff, 0 0 5px #fff, 0 0 10px #C7C1FF,
+        0 0 15px #F9E998, 0 0 20px #F9E998, 0 0 25px #F9E998, 0 0 30px #F9E998;
     }
 
     to {
-      text-shadow: 0 0 10px #fff, 0 0 15px #04aa6d, 0 0 20px #04aa6d,
-        0 0 25px #04aa6d, 0 0 30px #04aa6d, 0 0 35px #04aa6d, 0 0 40px #04aa6d;
+      text-shadow: 0 0 10px #fff, 0 0 15px #C7C1FF, 0 0 20px #C7C1FF,
+        0 0 25px #F9E998 0 0 30px #F9E998, 0 0 35px #F9E998, 0 0 40px #F9E998;
     }
   }
 </style>
@@ -100,7 +106,7 @@
 </div>
 <h3>User: {{ user.username }} [{{ user.first_name }} {{ user.last_name }}]</h3>
 <br /><br /><br />
-<h1 class="glow">{{ user.username }}'s LIST</h1>
+<h1 class="glow">{{ user.username }}'s Review List</h1>
 <table>
   {% for review in object_list %}
   <tr>
