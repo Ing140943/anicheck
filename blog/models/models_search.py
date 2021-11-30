@@ -24,8 +24,13 @@ async def anime_search(query):
         use_url = f"https://kitsu.io/api/edge/anime?filter[text]={anime_title}"
 
         response = requests.get(use_url)
+        json_data = response.json()['data']
+        poster_image_link = ""
+        for info in json_data:
+            poster_image_link = info['attributes']['posterImage']['original']
  
         demo[anime.title] = {
+            "names": anime.title,
             "sub-type": anime.subtype,
             "status": anime.status,
             "synopsis": anime.synopsis,
@@ -33,6 +38,7 @@ async def anime_search(query):
             "age-rating": anime.age_rating_guide,
             "popularity": anime.popularity_rank,
             "rating": anime.rating_rank,
+            "images": anime.poster_image_url,
         }
     return demo
 

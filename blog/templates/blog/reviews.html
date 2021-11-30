@@ -1,34 +1,135 @@
-{% extends "blog/base.html" %}
-{% block content %}
-    {% if reviews %}
-        {% for review in reviews %}
-            <div>
-                <h1>Title: {{ review.title }}</h1>
-                <h2>Author: {{ review.author.username }}</h2>
-                <p>Body: {{ review.body|safe }}</p>
-            </div>
-            <hr>
-        {% endfor %}
+{% extends "blog/base.html" %} {% block content %}
+<html>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cabin+Sketch:wght@700&family=Codystar&family=Comfortaa&family=Cutive+Mono&family=Dokdo&family=Finger+Paint&family=Indie+Flower&family=Lexend+Mega&family=Londrina+Outline&family=Luckiest+Guy&family=Press+Start+2P&family=Reenie+Beanie&family=Short+Stack&family=Yomogi&display=swap"
+      rel="stylesheet"
+    />
+    <title>Reviews</title>
+    <style>
+      body {
+        background-image: url("https://images.alphacoders.com/117/thumb-1920-1179921.jpg");
+        background-size: cover;
+      }
+      h3 {
+        text-align: center;
+        margin-top: 100px;
+        font-family: "Raleway", sans-serif;
+      }
 
-        {% if is_paginated %}
-        <!-- Pagination -->
-        <ul>
-            {% if page_obj.has_previous %}
-            <li>
-                <a class="page-link" href="?page={{ page_obj.previous_page_number }}">&larr; Newer</a>
-            </li>
-            {% endif %}
+      h1 {
+        margin-top: 30px;
+        margin-bottom: 20px;
+        font-family: "Raleway", sans-serif;
+        font-weight: 600;
+        font-size: 28px;
+      }
 
-            {% if page_obj.has_next %}
-            <li>
-                <a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a>
-            </li>
-            {% endif %}
-        </ul>
-        {% endif %}
-    {% else %}
-        <h1>No reviews yet!!!</h1>
+      h2,
+      h1 {
+        margin-bottom: 10px;
+        text-align: center;
+        font-family: "Raleway", sans-serif;
+        color: black;
+        text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+      }
+
+      p {
+        margin-bottom: 10px;
+        text-align: center;
+        font-family: "Raleway", sans-serif;
+        word-wrap:break-word;
+        color: black;
+      }
+
+      .text-hover:hover {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        background-color: #f7a450;
+        color: white;
+      }
+
+      .container {
+        border: 2px solid #dedede;
+        background-color: #f3f3f3;
+        border-radius: 5px;
+        padding: 10px;
+        margin: 30px;
+        background-color: #f2f2f2;
+        opacity: 0.5;
+        filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#ff99c8", endColorstr="#fcf6bd", GradientType=1 );
+      }
+
+      .container::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+
+      .container:hover {
+        opacity: 1;
+        color: white;
+      }
+
+      .text-hover {
+        border-radius: 5px;
+      }
+
+      .alert {
+        padding: 20px;
+        background-color: #7952b3;
+        color: white;
+        font-family: "Raleway", sans-serif;
+      }
+
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .closebtn:hover {
+        color: black;
+      }
+    </style>
+  </head>
+
+  {% if reviews %} {% for review in reviews %}
+  <div class="container">
+    <marquee direction="right">
+      <h1>Title: {{ review.title }}</h1>
+    </marquee>
+    <h2>Author: {{ review.author.username }}</h2>
+    <p class="text-hover">Body: {{ review.body|safe }}</p>
+  </div>
+  {% endfor %} {% if is_paginated %}
+  <!-- Pagination -->
+  <ul>
+    {% if page_obj.has_previous %}
+    <li>
+      <a class="page-link" href="?page={{ page_obj.previous_page_number }}"
+        >&larr; Newer</a
+      >
+    </li>
+    {% endif %} {% if page_obj.has_next %}
+    <li>
+      <a href="?page={{ page_obj.next_page_number }}">Older &rarr;</a>
+    </li>
     {% endif %}
-{% endblock %}
-
-
+  </ul>
+  {% endif %} {% else %}
+  <div class="alert">
+    <span class="closebtn" onclick="this.parentElement.style.display='none';"
+      >&times;</span
+    >
+    <strong>Info!</strong> No review yet ...
+  </div>
+  {% endif %} {% endblock %}
+</html>

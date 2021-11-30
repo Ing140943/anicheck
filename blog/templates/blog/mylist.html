@@ -1,0 +1,250 @@
+{% extends "blog/base.html" %} {% block content %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My List</title>
+    <style>
+      body {
+        background-image: url("https://images7.alphacoders.com/113/thumb-1920-1132478.png");
+        height: 100vh;
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      .alert {
+        padding: 20px;
+        background-color: #ffbd00;
+        color: white;
+        font-family: "Raleway", sans-serif;
+      }
+
+      .closebtn {
+        margin-left: 15px;
+        color: white;
+        font-weight: bold;
+        float: right;
+        font-size: 22px;
+        line-height: 20px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+
+      .closebtn:hover {
+        color: black;
+      }
+
+      h2 {
+        margin-top: 60px;
+        margin-left: 20px;
+        font-family: "Raleway", sans-serif;
+      }
+
+      body {
+        font-family: "Raleway", sans-serif;
+      }
+
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0, 0, 0);
+        background-color: rgba(0, 0, 0, 0.4);
+        border-radius: 25px;
+      }
+
+      .modal-content {
+        background-color: #fefefe;
+        margin: auto;
+        padding: 30px;
+        border: 1px solid #888;
+        width: 80%;
+        font-family: "Raleway", sans-serif;
+        border-radius: 10px;
+      }
+
+      .close {
+        color: #aaaaaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+      }
+
+      .close:hover,
+      .close:focus {
+        color: #000;
+        text-decoration: none;
+        cursor: pointer;
+      }
+
+      .container {
+        height: 50vh;
+        position: relative;
+      }
+
+      .center {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+
+      .list-button button {
+        font-size: 24px;
+        font-weight: bold;
+        padding: 20px 40px 30px 40px;
+        background-color: transparent;
+        background-repeat: no-repeat;
+        border: none;
+        cursor: pointer;
+        overflow: hidden;
+        outline: none;
+      }
+
+      .list-button button:hover {
+        color: white;
+        opacity: 0.8;
+      }
+
+      .glow {
+        color: #f45d06;
+        text-align: center;
+        animation: glow 1s ease-in-out infinite alternate;
+        margin-top: 500px;
+        margin-left: 50px;
+      }
+
+      @keyframes glow {
+        from {
+          text-shadow: 0 0 0px #fff, 0 0 5px #fff, 0 0 10px #fee682,
+            0 0 15px #fee682, 0 0 20px #fee682, 0 0 25px #fee682,
+            0 0 30px #fee682;
+        }
+
+        to {
+          text-shadow: 0 0 10px #fff, 0 0 15px #fee682, 0 0 20px #fee682,
+            0 0 25px #fee682, 0 0 30px #fee682, 0 0 35px #fee682,
+            0 0 40px #fee682;
+        }
+      }
+
+      p {
+        text-align: center;
+        color: white;
+        font-size: 14px;
+        text-decoration: under;
+        text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+        margin-left: 50px;
+      }
+
+      .title {
+        font-size: 20px;
+        color: #0b1c22;
+      }
+
+      .title:hover {
+        color: #ff3c00;
+      }
+
+      .remove {
+        font-size: 14px;
+        color: salmon;
+      }
+
+      .remove:hover {
+        color: red;
+      }
+    </style>
+  </head>
+
+  <body>
+    {% if not object_list %}
+    <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';"
+        >&times;</span
+      >
+      <strong>Info!</strong> There aren't any favorite anime yet, so go find
+      some and add it!!!
+    </div>
+
+    <div class="container">
+      <div class="center">
+        <div class="list-button">
+          <button id="myBtn">
+            <h1 class="glow">{{ user.username }}'s List</h1>
+          </button>
+          <p>Click For Your List</p>
+        </div>
+      </div>
+    </div>
+    {% endif %} {% if object_list %}
+    <div class="container">
+      <div class="center">
+        <div class="list-button">
+          <button id="myBtn">
+            <h1 class="glow">{{ user.username }}'s Favorite List</h1>
+          </button>
+          <p>Click For Your List</p>
+        </div>
+      </div>
+    </div>
+
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+
+        <table>
+          {% for title in object_list %}
+          <tr>
+            <td>
+              <a href="{% url 'blog:kitsu' title=title %}">
+                <h1 class="title">{{ title }}</h1>
+              </a>
+            </td>
+            <td>
+              <button class="remove-btn">
+                <a href="{% url 'blog:remove-mylist' title=title pk=user.pk %}">
+                  <h1 class="remove">[remove]</h1>
+                </a>
+              </button>
+            </td>
+          </tr>
+          {% endfor %}
+        </table>
+        {% endif %}
+      </div>
+    </div>
+
+    <script>
+
+      var modal = document.getElementById("myModal");
+      var btn = document.getElementById("myBtn");
+      var span = document.getElementsByClassName("close")[0];
+
+      btn.onclick = function () {
+        modal.style.display = "block";
+      };
+
+      span.onclick = function () {
+        modal.style.display = "none";
+      };
+
+      window.onclick = function (event) {
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
+</html>
+
+{% endblock %}
