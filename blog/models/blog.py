@@ -8,7 +8,7 @@ from django.utils import timezone
 class Review(models.Model):
     """Model for Review."""
     title = models.CharField(max_length=50, blank=False)
-    body = models.TextField(blank=False)
+    body = models.TextField(max_length=500, blank=False)
     pub_date = models.DateTimeField(auto_now_add=True)
     author = models.ForeignKey(User, related_name="reviews", on_delete=models.CASCADE)
 
