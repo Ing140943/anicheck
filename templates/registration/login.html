@@ -1,5 +1,6 @@
 {% extends "blog/base.html" %} {% block content %}
 
+{% load socialaccount %}
 <html>
 
 <head>
@@ -125,7 +126,11 @@
       display: grid;
       position: initial;
     }
-
+    .social-login {
+      display: flex;
+      justify-content: center;
+      width: auto;
+    }
     .form-edit {
       padding: 0px 0px 40px 0px;
       margin: 0px 400px 0px 400px;
@@ -180,6 +185,12 @@
         Don't have an account?&nbsp;<a href="{% url 'signup' %}" class="regist-btn" style="font-size: 16px;">Register</a>
         <br /><br />
       </div>
+      <div class="social-login">
+        <button class="social-btn"> <a href="{% provider_login_url 'google' %}" role="button" aria-pressed="true"></a>
+         Google Login
+        </button>
+      </div>
+     
       </p>
       <input type="hidden" name="next" value="{{next}}" />
     </form>
