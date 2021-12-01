@@ -170,6 +170,11 @@
       text-align: center;
     }
 
+    .oauth-btn{
+      font-size: 14px;
+      color: #fff;
+      text-align: center;
+    }
   </style>
 
   <div class="bg-img">
@@ -183,18 +188,15 @@
         <button class="btn" style="font-size: 16px" type="submit">Login</button>
       <div class="redirect; signup-text">
         Don't have an account?&nbsp;<a href="{% url 'signup' %}" class="regist-btn" style="font-size: 16px;">Register</a>
+         <br /><br />
+        <a href="{% provider_login_url 'google' %}" class="oauth-btn" role="button" aria-pressed="true">Sign In with Google</a>
         <br /><br />
       </div>
-      <div class="social-login">
-        <button class="social-btn"> <a href="{% provider_login_url 'google' %}" role="button" aria-pressed="true"></a>
-         Google Login
-        </button>
-      </div>
-     
       </p>
       <input type="hidden" name="next" value="{{next}}" />
     </form>
     {# If you have written a password_reset template, then add here #}
+    
 </body>
 </div>
 
