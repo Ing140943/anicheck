@@ -50,8 +50,8 @@
 
     :root {
       --bl-color: black;
-      --blue-color: #FF3544;
-      --lt-color: #FDF194;
+      --blue-color: #ff3544;
+      --lt-color: #fdf194;
       --text-fs: 16px;
       --title-fs: 34px;
     }
@@ -141,7 +141,7 @@
       font-weight: bold;
       color: black;
       cursor: pointer;
-      background-color: #FDF194;
+      background-color: #fdf194;
     }
 
     .icon {
@@ -164,7 +164,7 @@
       width: 100%;
       border-radius: 10px;
       text-indent: 15%;
-      background-color: #FCFBBC;
+      background-color: #fcfbbc;
     }
 
     .form-input:hover,
@@ -252,7 +252,7 @@
     }
 
     .error:hover {
-      background-color: #FF3544;
+      background-color: #ff3544;
     }
 
     @media screen and (max-width: 900px) {
@@ -270,26 +270,31 @@
     .text-center {
       color: black;
     }
-  
-
   </style>
 
   <body>
     <div class="container">
       <div class="card center spacer">
         <h1 class="title text-center">Register With</h1>
+
         <div class="social-login">
           <button class="social-btn">
-            <a href="{% provider_login_url 'google' %}" role="button" aria-pressed="true">
-            <img
-              class="icon"
-              src="https://www.glidetraining.com/wp-content/uploads/2020/10/Google-Gmail-2020.png"
-              alt="gmail icon"
+            <a
+              href="{% provider_login_url 'google' %}"
+              role="button"
+              aria-pressed="true"
+            >
+              <img
+                class="icon"
+                src="https://www.glidetraining.com/wp-content/uploads/2020/10/Google-Gmail-2020.png"
+                alt="gmail icon"
             /></a>
             Gmail
           </button>
         </div>
+
         <div class="text-center line form-divider">or</div>
+
         <form method="POST" class="login-form spacer" id="signup-form">
           {% csrf_token %}
           <div class="input-group">
@@ -351,7 +356,8 @@
     <div class="redirect">
       Already have an account?&nbsp;<a
         href="{% url 'login' %}"
-        class="glow" style="font-size: 16px; color: #FDF194;"
+        class="glow"
+        style="font-size: 16px; color: #fdf194"
         >Login</a
       >
       <br /><br />

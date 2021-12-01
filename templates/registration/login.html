@@ -9,7 +9,6 @@
 
 <body>
   <style>
-
     li {
       font-size: 16px;
       white-space: nowrap;
@@ -109,7 +108,6 @@
     input#id_password:focus {
       background-color: #ccc;
       outline: none;
-      position: initial;
     }
 
     input#id_username,
@@ -118,19 +116,17 @@
       outline: none;
       height: 30px;
       font-size: 18px;
-      margin: 15px 0px 20px 174px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 15px;
+      margin-bottom: 15px;
       padding: 12px;
       border: 1px solid #ccc;
       border-radius: 4px;
       width: 45%;
       display: grid;
-      position: initial;
     }
-    .social-login {
-      display: flex;
-      justify-content: center;
-      width: auto;
-    }
+
     .form-edit {
       padding: 0px 0px 40px 0px;
       margin: 0px 400px 0px 400px;
@@ -164,7 +160,7 @@
       color: var(--blue-color);
     }
 
-    .regist-btn{
+    .regist-btn {
       font-size: 14px;
       color: #fff;
       text-align: center;
@@ -175,6 +171,7 @@
       color: #fff;
       text-align: center;
     }
+
   </style>
 
   <div class="bg-img">
@@ -187,8 +184,9 @@
       <p>
         <button class="btn" style="font-size: 16px" type="submit">Login</button>
       <div class="redirect; signup-text">
-        Don't have an account?&nbsp;<a href="{% url 'signup' %}" class="regist-btn" style="font-size: 16px;">Register</a>
-         <br /><br />
+        Don't have an account?&nbsp;<a href="{% url 'signup' %}" class="regist-btn"
+          style="font-size: 16px;">Register</a>
+        <br /><br />
         <a href="{% provider_login_url 'google' %}" class="oauth-btn" role="button" aria-pressed="true">Sign In with Google</a>
         <br /><br />
       </div>
@@ -196,7 +194,7 @@
       <input type="hidden" name="next" value="{{next}}" />
     </form>
     {# If you have written a password_reset template, then add here #}
-    
+
 </body>
 </div>
 
