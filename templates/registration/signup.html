@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% load socialaccount %}
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -279,11 +280,12 @@
         <h1 class="title text-center">Register With</h1>
         <div class="social-login">
           <button class="social-btn">
+            <a href="{% provider_login_url 'google' %}" role="button" aria-pressed="true">
             <img
               class="icon"
               src="https://www.glidetraining.com/wp-content/uploads/2020/10/Google-Gmail-2020.png"
               alt="gmail icon"
-            />
+            /></a>
             Gmail
           </button>
         </div>
