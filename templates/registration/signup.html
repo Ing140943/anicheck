@@ -122,37 +122,12 @@
     .title {
       font-size: calc(var(--title-fs) + 6 * ((100vw - 320px) / 680));
       text-transform: uppercase;
-      margin-bottom: 30px;
-    }
-
-    .social-login {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-    }
-
-    .social-btn {
-      display: flex;
-      align-items: center;
-      gap: 3px;
-      border: none;
-      padding: 10px;
-      border-radius: 10px;
-      font-weight: bold;
-      color: black;
-      cursor: pointer;
-      background-color: #fdf194;
+      margin-bottom: 80px;
     }
 
     .icon {
       height: min(5vw, 30px);
       width: min(5vw, 30px);
-    }
-
-    .social-btn:hover {
-      border: solid 1px var(--blue-color);
-      padding: 9px;
-      background-color: white;
     }
 
     .form-divider {
@@ -275,25 +250,7 @@
   <body>
     <div class="container">
       <div class="card center spacer">
-        <h1 class="title text-center">Register With</h1>
-
-        <div class="social-login">
-          <button class="social-btn">
-            <a
-              href="{% provider_login_url 'google' %}"
-              role="button"
-              aria-pressed="true"
-            >
-              <img
-                class="icon"
-                src="https://www.glidetraining.com/wp-content/uploads/2020/10/Google-Gmail-2020.png"
-                alt="gmail icon"
-            /></a>
-            Gmail
-          </button>
-        </div>
-
-        <div class="text-center line form-divider">or</div>
+        <h1 class="title text-center">Register</h1>
 
         <form method="POST" class="login-form spacer" id="signup-form">
           {% csrf_token %}
@@ -309,7 +266,7 @@
               id="username"
               type="text"
               class="form-input"
-              placeholder="anicheck"
+              placeholder="username"
               maxlength="16"
               minlength="6"
             />
