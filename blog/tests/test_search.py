@@ -22,6 +22,7 @@ from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
 
+
 class QuestionDetailViewTests(TestCase):
     """Objective for test question is question can vote in properly time."""
     def setUp(self):
