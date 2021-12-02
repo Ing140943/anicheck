@@ -1,10 +1,10 @@
+"""Search function testing for project"""
+from django.test import TestCase
+import requests
 import nest_asyncio
 from django.contrib.auth.models import User
 
 nest_asyncio.apply()
-
-from django.test import TestCase
-import requests
 
 
 def make_dummy_url():
