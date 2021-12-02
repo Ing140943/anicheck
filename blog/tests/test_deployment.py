@@ -8,3 +8,4 @@ class QuestionDetailViewTests(TestCase):
     def test_web_deploy(self):
         heroku_web = requests.get('http://anicheck-isp.herokuapp.com/')
         self.assertEqual(heroku_web.status_code, 200)
+
