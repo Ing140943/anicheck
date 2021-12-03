@@ -29,4 +29,5 @@ jobs:
       env: 
         SECRET_KEY: your-genereated-secret_key
       run: |
+        python manage.py migrate --run-syncdb
         python manage.py test ./blog/tests
