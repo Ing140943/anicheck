@@ -28,4 +28,5 @@ jobs:
     - name: Run Tests
       env: 
         SECRET_KEY: your-genereated-secret_key
-
+      run: |
+        python manage.py test ./blog/tests
