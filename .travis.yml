@@ -1,17 +1,23 @@
 language: python
 
-# you can use a different version of Python
 python: "3.6"
 
-# don't clone more than necessary
+services:
+  - mysql
+
 git:
   depth: 1
 
-# Install dependencies
+env:
+  -DJANGO=3.1.2 DB=mysql
+
 install:
   - pip install -r requirements.txt
 
-# script to run tests. Script can have many commands, one per line.
+before_script:
+  - cp .env.example .env
+  - python manage.py migrate
+
 script:
   - coverage run manage.py test
 
