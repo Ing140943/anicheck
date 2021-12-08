@@ -107,7 +107,7 @@
       <h1>Title: {{ review.title }}</h1>
     </marquee>
     <h2>Author: {{ review.author.username }}</h2>
-    <p class="text-hover">Body: {{ review.body|safe }}</p>
+    <p class="text-hover">Body: {{ review.body}}</p>
   </div>
   {% endfor %} {% if is_paginated %}
   <!-- Pagination -->
